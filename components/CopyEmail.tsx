@@ -29,7 +29,7 @@ export default function CopyEmail() {
         onClick={handleCopy}
         className="text-sm font-medium text-violet-100 transition-colors hover:text-white"
       >
-        {copied ? "✓ Copied" : "Copy"}
+        {copied ? "Copied" : "Copy"}
       </button>
     </div>
   );

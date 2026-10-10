@@ -27,6 +27,8 @@ export default function Home() {
   );
 }
 
+/* ---------------- Icons ---------------- */
+
 function IconMobile() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
@@ -120,8 +122,63 @@ function IconWrench() {
   );
 }
 
-const serviceIcons = [<IconMobile key="m" />, <IconWeb key="w" />, <IconAI key="a" />];
+function IconRocket() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5">
+      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+      <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+    </svg>
+  );
+}
 
+function IconMapPin() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
+}
+
+function IconBriefcase() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+      <rect x="2" y="7" width="20" height="14" rx="2" />
+      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+    </svg>
+  );
+}
+
+function IconGlobe() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  );
+}
+
+function IconStar() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-3 w-3">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z" />
+    </svg>
+  );
+}
+
+function IconArrow() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5">
+      <path d="M5 12h14" />
+      <path d="M12 5l7 7-7 7" />
+    </svg>
+  );
+}
+
+const serviceIcons = [<IconMobile key="m" />, <IconWeb key="w" />, <IconAI key="a" />];
 const skillIcons = [
   <IconCode key="code" />,
   <IconPhone key="phone" />,
@@ -130,6 +187,8 @@ const skillIcons = [
   <IconServer key="server" />,
   <IconWrench key="wrench" />,
 ];
+
+/* ---------------- Sections ---------------- */
 
 function Hero() {
   return (
@@ -159,7 +218,10 @@ function Hero() {
               Open to work &amp; freelance
             </div>
             <div className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-3 py-1 text-[11px] font-medium text-zinc-700 md:text-xs">
-              🚀 GDG Mobile Track Lead
+              <span className="text-violet-600">
+                <IconRocket />
+              </span>
+              GDG Mobile Track Lead
             </div>
           </div>
 
@@ -167,7 +229,7 @@ function Hero() {
             Hi, I&apos;m Sylvia Njoki.
             <br />
             <span className="gradient-text">
-              I build mobile apps &amp; AI-powered products.
+              I build Android apps with AI built in.
             </span>
           </h1>
 
@@ -292,14 +354,28 @@ function Projects() {
                   </div>
                 </div>
                 {p.featured && (
-                  <span className="hidden rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm ring-1 ring-white/30 md:inline-block">
-                    ★ Featured
+                  <span className="hidden items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm ring-1 ring-white/30 md:inline-flex">
+                    <IconStar />
+                    Featured
                   </span>
                 )}
               </div>
             </div>
 
             <div className="p-6 md:p-8">
+              {p.screenshots && p.screenshots.length > 0 && (
+                <div className="mb-6 flex gap-3 overflow-x-auto pb-2">
+                  {p.screenshots.map((src, idx) => (
+                    <img
+                      key={idx}
+                      src={src}
+                      alt={`${p.title} screenshot ${idx + 1}`}
+                      className="h-44 w-auto flex-shrink-0 rounded-xl border border-violet-200 object-cover shadow-sm"
+                    />
+                  ))}
+                </div>
+              )}
+
               <p className="text-sm leading-relaxed text-zinc-700">
                 {p.description}
               </p>
@@ -325,25 +401,28 @@ function Projects() {
                 {p.links.github && (
                   <a
                     href={p.links.github}
-                    className="font-semibold text-violet-700 underline-offset-4 hover:text-violet-900 hover:underline"
+                    className="inline-flex items-center gap-1.5 font-semibold text-violet-700 underline-offset-4 hover:text-violet-900 hover:underline"
                   >
-                    GitHub →
+                    GitHub
+                    <IconArrow />
                   </a>
                 )}
                 {p.links.demo && (
                   <a
                     href={p.links.demo}
-                    className="font-semibold text-violet-700 underline-offset-4 hover:text-violet-900 hover:underline"
+                    className="inline-flex items-center gap-1.5 font-semibold text-violet-700 underline-offset-4 hover:text-violet-900 hover:underline"
                   >
-                    Live Demo →
+                    Live Demo
+                    <IconArrow />
                   </a>
                 )}
                 {p.links.video && (
                   <a
                     href={p.links.video}
-                    className="font-semibold text-violet-700 underline-offset-4 hover:text-violet-900 hover:underline"
+                    className="inline-flex items-center gap-1.5 font-semibold text-violet-700 underline-offset-4 hover:text-violet-900 hover:underline"
                   >
-                    Demo Video →
+                    Demo Video
+                    <IconArrow />
                   </a>
                 )}
               </div>
@@ -444,22 +523,22 @@ function About() {
       <div className="mt-10 grid gap-10 md:grid-cols-3">
         <div className="md:col-span-2 space-y-4 text-zinc-700">
           <p>
-            I&apos;m Sylvia Njoki, a software developer based in Kasarani,
-            Nairobi. I build mobile and web applications with a focus on
-            fintech, financial inclusion, and AI-powered features.
+            I&apos;m Sylvia Njoki, a mobile and full-stack developer based in
+            Kasarani, Nairobi. My strongest work is Android - Kotlin apps with
+            backend integrations and AI features woven in.
           </p>
           <p>
-            My work sits at the intersection of technology and real impact —
-            like an Android app that helps women access loans without land
-            collateral, or a multi-branch HR platform used across an
-            organization.
+            My flagship project, SheLoans, gives women access to credit without
+            land collateral by combining bank APIs, M-Pesa, and an internal
+            credit-scoring engine. I&apos;ve also built web dashboards, an ML
+            churn model, and a community site for SheCode Africa.
           </p>
           <p>
-            I&apos;m currently open to{" "}
+            Currently open to{" "}
             <span className="font-semibold text-zinc-900">freelance projects</span>,{" "}
             <span className="font-semibold text-zinc-900">full-time roles</span>, and{" "}
-            <span className="font-semibold text-zinc-900">internships</span> —
-            especially in fintech, mobile development, or AI/ML.
+            <span className="font-semibold text-zinc-900">internships</span> -
+            especially in fintech, mobile, or AI.
           </p>
         </div>
         <div className="relative overflow-hidden rounded-2xl border border-violet-300 bg-white p-6 shadow-sm shadow-violet-200">
@@ -469,10 +548,30 @@ function About() {
               Quick facts
             </p>
             <ul className="mt-4 space-y-3 text-sm font-medium text-zinc-800">
-              <li>📍 {siteConfig.location}</li>
-              <li>💼 Open to work</li>
-              <li>🌍 Remote-friendly</li>
-              <li>📱 Android · Web · AI</li>
+              <li className="flex items-center gap-2">
+                <span className="text-violet-600">
+                  <IconMapPin />
+                </span>
+                {siteConfig.location}
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-violet-600">
+                  <IconBriefcase />
+                </span>
+                Open to work
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-violet-600">
+                  <IconGlobe />
+                </span>
+                Remote-friendly
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-violet-600">
+                  <IconMobile />
+                </span>
+                Android - Web - AI
+              </li>
             </ul>
           </div>
         </div>
@@ -525,7 +624,7 @@ function Footer() {
   return (
     <footer className="border-t border-violet-200 bg-white/50">
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-6 py-8 text-xs font-medium text-zinc-700 md:flex-row">
-        <p>© 2025 {siteConfig.name}. All rights reserved.</p>
+        <p>© 2026 {siteConfig.name}. All rights reserved.</p>
         <p>Built with Next.js &amp; Tailwind.</p>
       </div>
     </footer>
