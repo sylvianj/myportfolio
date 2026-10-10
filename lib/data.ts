@@ -43,17 +43,17 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "Amana",
-    subtitle: "Mobile app unlocking loans for women",
+    title: "SheLoans",
+    subtitle: "Mobile app unlocking credit for women",
     role: "Solo Developer — Android, Backend, AI",
     description:
-      "A native Android app that builds a verifiable credit score for women, enabling them to access loans without land collateral or formal employment. It connects to major Kenyan banks, uses M-Pesa for transactions, and includes an in-app Grok-powered chatbot for financial guidance.",
+      "A native Android app designed to promote financial inclusion for women. SheLoans provides access to credit through a loan marketplace connected to major Kenyan banks (Equity, KCB, Absa), savings goals, Chama (investment group) management, and M-Pesa transactions — plus an AI-powered chatbot for financial advice.",
     problem:
-      "Millions of women are locked out of formal credit because they lack land titles or payslips — the exact assets and documents traditional lenders demand.",
+      "Millions of women are locked out of formal credit because they lack land titles or payslips — the exact assets and documents traditional lenders demand. Informal savings groups (Chamas) are also hard to track and manage.",
     result:
-      "Shipped a working Android app end-to-end: a credit-scoring engine, M-Pesa STK Push integration, bank API connections, an in-app Grok chatbot, and an anonymous channel for reporting bank irregularities.",
-    tech: ["Kotlin", "Android", "M-Pesa API", "Grok API", "REST APIs", "Room DB"],
-    links: { github: "https://github.com/sylvianj" },
+      "Shipped a working Android app end-to-end: a loan marketplace integrated with major Kenyan banks, M-Pesa STK Push for deposits and withdrawals, an internal credit-scoring system that rewards consistent saving, Chama management, and an AI assistant powered by Groq/Llama for financial guidance.",
+    tech: ["Kotlin", "Firebase", "M-Pesa API", "Groq API", "Retrofit", "Material Design"],
+    links: { github: "https://github.com/sylvianj/SheLoans" },
     featured: true,
   },
   {
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     result:
       "Trained and evaluated classification models to predict churn risk, with feature importance analysis showing which behaviours most strongly indicate attrition.",
     tech: ["Python", "scikit-learn", "Pandas", "NumPy", "Matplotlib"],
-    links: { github: "https://github.com/sylvianj" },
+    links: { github: "https://github.com/sylvianj/churn-prediction" },
   },
   {
     title: "Branch HR System",
@@ -80,7 +80,7 @@ export const projects: Project[] = [
     result:
       "Delivered a working multi-role system with separate dashboards for HR executives and employees, branch-level isolation, and a clean React frontend backed by a Python API.",
     tech: ["React", "Vite", "TypeScript", "Python", "REST APIs"],
-    links: { github: "https://github.com/sylvianj" },
+    links: { github: "https://github.com/Bonareri-Nelly/Hr_front" },
   },
   {
     title: "SheCode Africa — Chuka Chapter Website",
@@ -116,7 +116,7 @@ export const skillGroups = [
   },
   {
     label: "Backend & APIs",
-    items: ["Python", "REST APIs", "M-Pesa API", "Grok API"],
+    items: ["Python", "REST APIs", "M-Pesa API", "Groq API", "Firebase"],
   },
   {
     label: "Tools",
@@ -134,10 +134,10 @@ export const experience = [
   },
   {
     role: "Android Developer — Self-initiated Project",
-    company: "Amana (Women's Credit Access App)",
+    company: "SheLoans (Women's Financial Inclusion App)",
     period: "2024 — Present",
     description:
-      "Designed and built a native Android app in Kotlin that gives women a verifiable credit score, integrates M-Pesa and bank APIs, and embeds a Grok-powered chatbot for financial guidance.",
+      "Designed and built SheLoans, a native Android app in Kotlin that helps women access credit without land collateral. Integrates a loan marketplace with Kenyan banks, M-Pesa STK Push, Chama group management, an internal credit-scoring system, and a Groq-powered financial assistant.",
   },
   {
     role: "Frontend Developer — Team Project",
