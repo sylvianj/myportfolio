@@ -42,7 +42,7 @@ export default function Home() {
   );
 }
 
-/* ---------------- Icons ---------------- */
+
 
 function IconMobile() {
   return (
@@ -199,7 +199,7 @@ function Hero() {
     <section id="home" className="relative w-full bg-[#1e1e24] pt-32 pb-16 md:pt-40 md:pb-28">
       <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-10 px-4 md:px-8 md:flex-row">
         
-        {/* TEXT SECTION - Centered on mobile, left-aligned on desktop */}
+        
         <div className="w-full md:w-3/5 text-center md:text-left">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
             Welcome to my world
@@ -230,7 +230,7 @@ function Hero() {
           </div>
         </div>
 
-        {/* IMAGE SECTION - Hidden on mobile (hidden), visible on desktop (md:flex) */}
+        
         <div className="hidden md:flex relative w-full justify-center md:w-2/5 md:justify-end">
           <div className="relative h-80 w-80 md:h-[450px] md:w-[400px]">
             <img
@@ -419,14 +419,14 @@ function Projects() {
               
               <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
                 
-                {/* LEFT SIDE: CAROUSEL */}
+                
                 {p.screenshots && p.screenshots.length > 0 && (
                   <div className="w-full md:w-[220px] shrink-0 flex justify-center md:justify-start">
                     <ProjectCarousel images={p.screenshots} title={p.title} />
                   </div>
                 )}
 
-                {/* RIGHT SIDE: TEXT CONTENT */}
+                
                 <div className="flex-1 w-full">
                   <p className="text-sm md:text-base leading-relaxed text-zinc-700">
                     {p.description}

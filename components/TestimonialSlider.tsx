@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 const testimonials = [
   {
-    name: "GDG Community Member",
+    name: "Osborn Nyakaru",
     title: "Ai/ML Lead",
     quote: "As our Mobile Track Lead, Sylvia broke down Kotlin and Jetpack concepts in a way that finally made them click. She's an incredible mentor and community leader.",
     image: "testimonial-1.jpg",
@@ -44,7 +44,8 @@ export default function TestimonialSlider() {
         <img
           src={current.image}
           alt={current.name}
-          className="mx-auto h-24 w-24 rounded-full border-4 border-white object-cover shadow-xl transition-all duration-500"
+          className="mx-auto block aspect-square h-24 w-24 shrink-0 rounded-full border-4 border-white object-cover shadow-xl transition-all duration-500"
+          
         />
         
         
