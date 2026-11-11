@@ -55,7 +55,12 @@ export const projects: Project[] = [
       "Shipped an end-to-end Android app: working M-Pesa integration, an internal credit-scoring system that rewards savings behaviour, bank API connections, and a Groq-powered financial assistant.",
     tech: ["Kotlin", "Firebase", "M-Pesa API", "Groq API", "Retrofit", "Material Design"],
     links: { github: "https://github.com/sylvianj/SheLoans" },
-    screenshots: [],
+    screenshots: [
+      "/screenshots/she-1.jpg",
+      "/screenshots/she-2.jpg",
+      "/screenshots/she-3.jpg",
+      "/screenshots/she-4.jpg",
+    ],
     featured: true,
   },
   {

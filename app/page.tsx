@@ -1,5 +1,8 @@
 import Navbar from "@/components/Navbar";
 import CopyEmail from "@/components/CopyEmail";
+import Typewriter from "@/components/Typewriter";
+import ProjectCarousel from "@/components/ProjectCarousel";
+import TestimonialSlider from "@/components/TestimonialSlider";
 import {
   siteConfig,
   services,
@@ -12,22 +15,34 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="mx-auto max-w-5xl px-6">
-        <Hero />
-        <Stats />
+      
+      <Hero />
+
+      <main className="mx-auto max-w-[1440px] px-4 md:px-8">
+        <About />
         <Services />
+      </main>
+
+      <Stats />
+
+      <main className="mx-auto max-w-[1440px] px-4 md:px-8">
         <Projects />
         <Skills />
+      </main>
+
+      <TestimonialSlider />
+
+      <main className="mx-auto max-w-[1440px] px-4 md:px-8">
         <Experience />
-        <About />
         <Contact />
       </main>
+      
       <Footer />
     </>
   );
 }
 
-/* ---------------- Icons ---------------- */
+
 
 function IconMobile() {
   return (
@@ -122,17 +137,6 @@ function IconWrench() {
   );
 }
 
-function IconRocket() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5">
-      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-      <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-    </svg>
-  );
-}
-
 function IconMapPin() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
@@ -188,76 +192,53 @@ const skillIcons = [
   <IconWrench key="wrench" />,
 ];
 
-/* ---------------- Sections ---------------- */
 
 function Hero() {
   return (
-    <section
-      id="home"
-      className="relative scroll-mt-24 overflow-hidden pb-16 pt-24 md:pb-28 md:pt-40"
-    >
-      <div className="pointer-events-none absolute inset-0 -z-10 hero-glow" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full opacity-40 [mask-image:linear-gradient(to_bottom,black,transparent_70%)] dot-grid" />
+    <section id="home" className="relative w-full bg-[#1e1e24] pt-28 pb-16 md:pt-40 md:pb-28">
+      <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-8 px-4 md:px-8 md:flex-row md:gap-12">
+        
+        <div className="w-full md:w-3/5 text-center md:text-left">
+          <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
+            Welcome to my world
+          </p>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight text-white md:mt-6 md:text-7xl">
+            Hi, I&apos;m <span className="text-fuchsia-500">Sylvia Njoki</span>
+          </h1>
+          <div className="mt-3 flex justify-center md:justify-start text-xl font-semibold md:text-5xl">
+            <Typewriter />
+          </div>
+          <p className="mt-5 text-sm leading-relaxed text-zinc-400 md:mt-8 md:text-base text-left md:max-w-lg mx-auto md:mx-0">
+            {siteConfig.description}
+          </p>
 
-      <div className="grid gap-10 md:grid-cols-[1fr_auto] md:items-center md:gap-12">
-        <div className="order-1 justify-self-center md:order-2 md:justify-self-end">
-          <div className="relative">
-            <div className="absolute -inset-3 rounded-full bg-gradient-to-tr from-violet-400 via-fuchsia-300 to-violet-500 opacity-40 blur-2xl" />
+          <div className="mt-8 flex justify-center gap-3 md:justify-start md:mt-10 md:gap-4">
+            <a
+              href="#work"
+              className="rounded-full bg-fuchsia-500 px-5 py-2.5 text-xs font-semibold text-white shadow-lg shadow-fuchsia-500/30 transition-all hover:-translate-y-0.5 hover:bg-fuchsia-600 md:px-6 md:py-3 md:text-sm"
+            >
+              View My Work
+            </a>
+            <a
+              href={siteConfig.resumeUrl}
+              className="rounded-full border border-zinc-700 bg-transparent px-5 py-2.5 text-xs font-semibold text-white transition-all hover:bg-zinc-800 md:px-6 md:py-3 md:text-sm"
+            >
+              Resume
+            </a>
+          </div>
+        </div>
+
+        <div className="relative flex w-full justify-center md:w-2/5 md:justify-end">
+          {/* Reduced the mobile image size to save vertical space */}
+          <div className="relative h-52 w-52 md:h-[450px] md:w-[400px]">
             <img
-              src="/profile.jpg"
+              src="/sylvia-main.jpg"
               alt="Sylvia Njoki"
-              className="relative h-40 w-40 rounded-full border-4 border-white object-cover shadow-2xl shadow-violet-300 ring-2 ring-violet-300 md:h-72 md:w-72"
+              className="h-full w-full rounded-2xl object-cover object-top shadow-2xl"
             />
           </div>
         </div>
 
-        <div className="order-2 animate-fadeUp md:order-1">
-          <div className="flex flex-wrap items-center gap-2 md:gap-3">
-            <div className="inline-flex items-center gap-2 rounded-full border border-violet-300 bg-white px-3 py-1 text-[11px] font-medium text-violet-800 md:text-xs">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-600" />
-              Open to work &amp; freelance
-            </div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-3 py-1 text-[11px] font-medium text-zinc-700 md:text-xs">
-              <span className="text-violet-600">
-                <IconRocket />
-              </span>
-              GDG Mobile Track Lead
-            </div>
-          </div>
-
-          <h1 className="mt-5 text-3xl font-semibold tracking-tight text-zinc-900 md:mt-6 md:text-6xl">
-            Hi, I&apos;m Sylvia Njoki.
-            <br />
-            <span className="gradient-text">
-              I build Android apps with AI built in.
-            </span>
-          </h1>
-
-          <p className="mt-4 text-base leading-relaxed text-zinc-700 md:mt-6 md:max-w-2xl md:text-lg">
-            {siteConfig.description}
-          </p>
-
-          <div className="mt-6 flex flex-wrap gap-2 md:mt-8 md:gap-3">
-            <a
-              href="#work"
-              className="rounded-full bg-violet-700 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-violet-300/50 transition-all hover:-translate-y-0.5 hover:bg-violet-800 hover:shadow-xl hover:shadow-violet-400/50 md:px-5 md:py-2.5"
-            >
-              View Work
-            </a>
-            <a
-              href={siteConfig.resumeUrl}
-              className="rounded-full border border-violet-300 bg-white px-4 py-2 text-sm font-medium text-zinc-800 shadow-sm transition-all hover:border-violet-400 hover:bg-violet-50 hover:text-violet-800 md:px-5 md:py-2.5"
-            >
-              Download Resume
-            </a>
-            <a
-              href="#contact"
-              className="rounded-full border border-violet-300 bg-white px-4 py-2 text-sm font-medium text-zinc-800 shadow-sm transition-all hover:border-violet-400 hover:bg-violet-50 hover:text-violet-800 md:px-5 md:py-2.5"
-            >
-              Get in Touch
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -265,252 +246,30 @@ function Hero() {
 
 function Stats() {
   const stats = [
-    { value: "4", label: "Projects shipped" },
+    { value: "4", label: "Projects Shipped" },
     { value: "6+", label: "Technologies" },
-    { value: "1", label: "Leadership role" },
-    { value: "3mo", label: "Industry attachment" },
+    { value: "1", label: "Leadership Role" },
+    { value: "3", label: "Months Industry Exp." },
   ];
   return (
-    <section className="border-y border-violet-200 bg-white/50 py-8">
-      <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-        {stats.map((s) => (
-          <div key={s.label} className="text-center">
-            <p className="text-2xl font-semibold text-violet-700 md:text-3xl">
-              {s.value}
-            </p>
-            <p className="mt-1 text-xs font-medium uppercase tracking-wider text-zinc-600 md:text-sm">
-              {s.label}
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Services() {
-  return (
-    <section className="scroll-mt-24 py-14 md:py-24">
-      <SectionHeader eyebrow="Services" title="What I do" />
-      <div className="mt-10 grid gap-5 md:grid-cols-3">
-        {services.map((s, i) => (
-          <div
-            key={s.title}
-            className="group relative overflow-hidden rounded-2xl border border-violet-200 bg-white p-6 shadow-sm shadow-violet-200/60 transition-all hover:-translate-y-1 hover:border-violet-400 hover:shadow-xl hover:shadow-violet-300/60"
-          >
-            <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br from-violet-200 to-fuchsia-100 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
-
-            <div className="relative">
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-violet-300/50">
-                {serviceIcons[i]}
-              </div>
-              <h3 className="mt-5 text-base font-semibold text-zinc-900">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-700">
-                {s.description}
+    <section 
+      className="relative w-full bg-[#1e1e24] bg-cover bg-center py-10 md:py-20"
+      style={{ backgroundImage: "url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80')" }}
+    >
+      <div className="absolute inset-0 bg-violet-900/85 mix-blend-multiply" />
+      <div className="relative mx-auto max-w-[1440px] px-4 md:px-8">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
+          {stats.map((s) => (
+            <div key={s.label} className="text-center">
+              <p className="mb-1 text-2xl font-bold text-white md:text-6xl">
+                {s.value}
+              </p>
+              <p className="text-[9px] font-medium uppercase tracking-wider text-violet-200 md:text-sm">
+                {s.label}
               </p>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Projects() {
-  const gradients = [
-    "from-violet-700 via-violet-600 to-fuchsia-600",
-    "from-violet-600 via-violet-500 to-fuchsia-500",
-    "from-violet-700 via-indigo-600 to-violet-600",
-    "from-fuchsia-600 via-violet-600 to-violet-700",
-  ];
-
-  return (
-    <section id="work" className="scroll-mt-24 border-t border-violet-200 py-14 md:py-24">
-      <SectionHeader eyebrow="Selected Work" title="Projects & case studies" />
-      <div className="mt-10 space-y-6">
-        {projects.map((p, i) => (
-          <article
-            key={p.title}
-            className={`group overflow-hidden rounded-2xl border bg-white shadow-sm transition-all ${
-              p.featured
-                ? "border-violet-400 shadow-lg shadow-violet-300/60 hover:shadow-xl hover:shadow-violet-400/60"
-                : "border-violet-200 shadow-violet-200/60 hover:border-violet-300 hover:shadow-xl hover:shadow-violet-300/60"
-            }`}
-          >
-            <div className={`relative h-28 bg-gradient-to-br ${gradients[i % gradients.length]} md:h-32`}>
-              <div className="absolute inset-0 opacity-20 dot-grid" />
-              <div className="relative flex h-full items-center justify-between px-6 md:px-8">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 text-2xl font-bold text-white backdrop-blur-sm ring-1 ring-white/30">
-                    {p.title.charAt(0)}
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white md:text-xl">
-                      {p.title}
-                    </h3>
-                    <p className="text-xs font-medium text-white/85 md:text-sm">
-                      {p.subtitle}
-                    </p>
-                  </div>
-                </div>
-                {p.featured && (
-                  <span className="hidden items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm ring-1 ring-white/30 md:inline-flex">
-                    <IconStar />
-                    Featured
-                  </span>
-                )}
-              </div>
-            </div>
-
-            <div className="p-6 md:p-8">
-              {p.screenshots && p.screenshots.length > 0 && (
-                <div className="mb-6 flex gap-3 overflow-x-auto pb-2">
-                  {p.screenshots.map((src, idx) => (
-                    <img
-                      key={idx}
-                      src={src}
-                      alt={`${p.title} screenshot ${idx + 1}`}
-                      className="h-44 w-auto flex-shrink-0 rounded-xl border border-violet-200 object-cover shadow-sm"
-                    />
-                  ))}
-                </div>
-              )}
-
-              <p className="text-sm leading-relaxed text-zinc-700">
-                {p.description}
-              </p>
-
-              <div className="mt-5 grid gap-4 md:grid-cols-3">
-                <Field label="Role" value={p.role} />
-                <Field label="Problem" value={p.problem} />
-                <Field label="Result" value={p.result} />
-              </div>
-
-              <div className="mt-6 flex flex-wrap gap-2">
-                {p.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-800"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-6 flex flex-wrap gap-4 text-sm">
-                {p.links.github && (
-                  <a
-                    href={p.links.github}
-                    className="inline-flex items-center gap-1.5 font-semibold text-violet-700 underline-offset-4 hover:text-violet-900 hover:underline"
-                  >
-                    GitHub
-                    <IconArrow />
-                  </a>
-                )}
-                {p.links.demo && (
-                  <a
-                    href={p.links.demo}
-                    className="inline-flex items-center gap-1.5 font-semibold text-violet-700 underline-offset-4 hover:text-violet-900 hover:underline"
-                  >
-                    Live Demo
-                    <IconArrow />
-                  </a>
-                )}
-                {p.links.video && (
-                  <a
-                    href={p.links.video}
-                    className="inline-flex items-center gap-1.5 font-semibold text-violet-700 underline-offset-4 hover:text-violet-900 hover:underline"
-                  >
-                    Demo Video
-                    <IconArrow />
-                  </a>
-                )}
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Field({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <p className="text-xs font-semibold uppercase tracking-wider text-violet-700">
-        {label}
-      </p>
-      <p className="mt-1 text-sm text-zinc-700">{value}</p>
-    </div>
-  );
-}
-
-function Skills() {
-  return (
-    <section id="skills" className="scroll-mt-24 border-t border-violet-200 py-14 md:py-24">
-      <SectionHeader eyebrow="Toolbox" title="Skills & technologies" />
-      <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {skillGroups.map((g, i) => (
-          <div
-            key={g.label}
-            className="group relative overflow-hidden rounded-2xl border border-violet-200 bg-white p-6 shadow-sm shadow-violet-200/60 transition-all hover:-translate-y-1 hover:border-violet-400 hover:shadow-xl hover:shadow-violet-300/60"
-          >
-            <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br from-violet-200 to-fuchsia-100 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
-
-            <div className="relative">
-              <div className="flex items-center gap-3">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-md shadow-violet-300/50">
-                  {skillIcons[i % skillIcons.length]}
-                </div>
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-violet-800">
-                  {g.label}
-                </h3>
-              </div>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                {g.items.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-800 transition-colors hover:border-violet-400 hover:bg-violet-100"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Experience() {
-  return (
-    <section id="experience" className="scroll-mt-24 border-t border-violet-200 py-14 md:py-24">
-      <SectionHeader eyebrow="Background" title="Experience & education" />
-      <div className="mt-10 space-y-8">
-        {experience.map((e, i) => (
-          <div key={e.role + e.company} className="relative pl-8">
-            <div className="absolute left-0 top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-white ring-2 ring-violet-500">
-              <div className="h-1.5 w-1.5 rounded-full bg-violet-600" />
-            </div>
-            {i < experience.length - 1 && (
-              <div className="absolute left-[7px] top-6 h-[calc(100%+1.5rem)] w-px bg-gradient-to-b from-violet-400 to-transparent" />
-            )}
-
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 className="text-base font-semibold text-zinc-900">{e.role}</h3>
-              <span className="rounded-full bg-white px-2.5 py-0.5 text-xs font-medium text-violet-800 shadow-sm">
-                {e.period}
-              </span>
-            </div>
-            <p className="mt-1 text-sm font-semibold text-violet-700">{e.company}</p>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-700">
-              {e.description}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -518,22 +277,22 @@ function Experience() {
 
 function About() {
   return (
-    <section id="about" className="scroll-mt-24 border-t border-violet-200 py-14 md:py-24">
+    <section id="about" className="scroll-mt-24 py-10 md:py-24">
       <SectionHeader eyebrow="About" title="A little about me" />
-      <div className="mt-10 grid gap-10 md:grid-cols-3">
+      <div className="mt-6 grid gap-6 md:mt-10 md:gap-10 md:grid-cols-3">
         <div className="md:col-span-2 space-y-4 text-zinc-700">
-          <p>
+          <p className="text-xs md:text-base leading-relaxed">
             I&apos;m Sylvia Njoki, a mobile and full-stack developer based in
             Kasarani, Nairobi. My strongest work is Android - Kotlin apps with
             backend integrations and AI features woven in.
           </p>
-          <p>
+          <p className="text-xs md:text-base leading-relaxed">
             My flagship project, SheLoans, gives women access to credit without
             land collateral by combining bank APIs, M-Pesa, and an internal
             credit-scoring engine. I&apos;ve also built web dashboards, an ML
             churn model, and a community site for SheCode Africa.
           </p>
-          <p>
+          <p className="text-xs md:text-base leading-relaxed">
             Currently open to{" "}
             <span className="font-semibold text-zinc-900">freelance projects</span>,{" "}
             <span className="font-semibold text-zinc-900">full-time roles</span>, and{" "}
@@ -541,13 +300,13 @@ function About() {
             especially in fintech, mobile, or AI.
           </p>
         </div>
-        <div className="relative overflow-hidden rounded-2xl border border-violet-300 bg-white p-6 shadow-sm shadow-violet-200">
+        <div className="relative overflow-hidden rounded-2xl border border-violet-300 bg-white p-5 md:p-6 shadow-sm shadow-violet-200">
           <div className="absolute inset-0 opacity-30 dot-grid" />
           <div className="relative">
-            <p className="text-xs font-semibold uppercase tracking-wider text-violet-800">
+            <p className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-violet-800">
               Quick facts
             </p>
-            <ul className="mt-4 space-y-3 text-sm font-medium text-zinc-800">
+            <ul className="mt-3 space-y-3 text-xs md:text-sm font-medium text-zinc-800">
               <li className="flex items-center gap-2">
                 <span className="text-violet-600">
                   <IconMapPin />
@@ -580,39 +339,267 @@ function About() {
   );
 }
 
+function Services() {
+  return (
+    <section id="services" className="scroll-mt-24 border-t border-violet-200 py-10 md:py-24">
+      <SectionHeader eyebrow="Services" title="What I do" />
+      <div className="mt-6 grid gap-4 md:mt-10 md:gap-5 md:grid-cols-3">
+        {services.map((s, i) => (
+          <div
+            key={s.title}
+            className="group relative overflow-hidden rounded-2xl border border-violet-200 bg-white p-5 md:p-6 shadow-sm shadow-violet-200/60 transition-all hover:-translate-y-1 hover:border-violet-400 hover:shadow-xl hover:shadow-violet-300/60"
+          >
+            <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br from-violet-200 to-fuchsia-100 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+
+            <div className="relative">
+              <div className="inline-flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-violet-300/50">
+                {serviceIcons[i]}
+              </div>
+              <h3 className="mt-4 text-sm md:text-base font-semibold text-zinc-900">{s.title}</h3>
+              <p className="mt-2 text-xs md:text-sm leading-relaxed text-zinc-700">
+                {s.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Projects() {
+  const gradients = [
+    "from-violet-700 via-violet-600 to-fuchsia-600",
+    "from-violet-600 via-violet-500 to-fuchsia-500",
+    "from-violet-700 via-indigo-600 to-violet-600",
+    "from-fuchsia-600 via-violet-600 to-violet-700",
+  ];
+
+  return (
+    <section id="work" className="scroll-mt-24 py-10 md:py-24">
+      <SectionHeader eyebrow="Selected Work" title="Projects & case studies" />
+      <div className="mt-6 space-y-8 md:mt-10 md:space-y-12">
+        {projects.map((p, i) => (
+          <article
+            key={p.title}
+            className={`group overflow-hidden rounded-3xl border bg-white shadow-sm transition-all ${
+              p.featured
+                ? "border-violet-400 shadow-lg shadow-violet-300/60 hover:shadow-xl hover:shadow-violet-400/60"
+                : "border-violet-200 shadow-violet-200/60 hover:border-violet-300 hover:shadow-xl hover:shadow-violet-300/60"
+            }`}
+          >
+            <div className={`relative h-20 bg-gradient-to-br ${gradients[i % gradients.length]} md:h-32`}>
+              <div className="absolute inset-0 opacity-20 dot-grid" />
+              <div className="relative flex h-full items-center justify-between px-4 md:px-8">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-xl md:rounded-2xl bg-white/20 text-lg md:text-2xl font-bold text-white backdrop-blur-sm ring-1 ring-white/30">
+                    {p.title.charAt(0)}
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-semibold text-white md:text-2xl">
+                      {p.title}
+                    </h3>
+                    <p className="text-[9px] md:text-sm font-medium text-white/85">
+                      {p.subtitle}
+                    </p>
+                  </div>
+                </div>
+                {p.featured && (
+                  <span className="hidden items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm ring-1 ring-white/30 md:inline-flex">
+                    <IconStar />
+                    Featured
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <div className="p-4 md:p-8">
+              
+              <div className="flex flex-col md:flex-row gap-5 md:gap-8 items-start">
+                
+                
+                {p.screenshots && p.screenshots.length > 0 && (
+                  <div className="w-full md:w-[220px] shrink-0 flex justify-center md:justify-start">
+                    <ProjectCarousel images={p.screenshots} title={p.title} />
+                  </div>
+                )}
+
+               
+                <div className="flex-1 w-full">
+                  <p className="text-xs md:text-base leading-relaxed text-zinc-700">
+                    {p.description}
+                  </p>
+
+                  <div className="mt-4 grid gap-4 md:mt-6 md:gap-6 md:grid-cols-3">
+                    <Field label="Role" value={p.role} />
+                    <Field label="Problem" value={p.problem} />
+                    <Field label="Result" value={p.result} />
+                  </div>
+
+                  <div className="mt-4 flex flex-wrap gap-1.5 md:mt-8 md:gap-2">
+                    {p.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[9px] md:text-xs font-semibold text-violet-800 md:px-3 md:py-1"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-5 flex flex-wrap gap-4 text-xs md:mt-8 md:gap-6 md:text-sm">
+                    {p.links.github && (
+                      <a
+                        href={p.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 font-semibold text-violet-700 underline-offset-4 hover:text-violet-900 hover:underline"
+                      >
+                        GitHub
+                        <IconArrow />
+                      </a>
+                    )}
+                    {p.links.demo && (
+                      <a
+                        href={p.links.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 font-semibold text-violet-700 underline-offset-4 hover:text-violet-900 hover:underline"
+                      >
+                        Live Demo
+                        <IconArrow />
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Field({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <p className="text-[9px] md:text-xs font-semibold uppercase tracking-wider text-violet-700">
+        {label}
+      </p>
+      <p className="mt-1 text-[11px] md:text-sm text-zinc-700">{value}</p>
+    </div>
+  );
+}
+
+function Skills() {
+  return (
+    <section id="skills" className="scroll-mt-24 border-t border-violet-200 py-10 md:py-24">
+      <SectionHeader eyebrow="Toolbox" title="Skills & technologies" />
+      <div className="mt-6 grid gap-4 md:mt-10 md:gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {skillGroups.map((g, i) => (
+          <div
+            key={g.label}
+            className="group relative overflow-hidden rounded-2xl border border-violet-200 bg-white p-4 md:p-6 shadow-sm shadow-violet-200/60 transition-all hover:-translate-y-1 hover:border-violet-400 hover:shadow-xl hover:shadow-violet-300/60"
+          >
+            <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br from-violet-200 to-fuchsia-100 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+
+            <div className="relative">
+              <div className="flex items-center gap-2 md:gap-3">
+                <div className="inline-flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-md shadow-violet-300/50">
+                  {skillIcons[i % skillIcons.length]}
+                </div>
+                <h3 className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-violet-800">
+                  {g.label}
+                </h3>
+              </div>
+
+              <div className="mt-3 flex flex-wrap gap-1.5 md:mt-4 md:gap-2">
+                {g.items.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[9px] md:text-xs font-semibold text-violet-800 transition-colors hover:border-violet-400 hover:bg-violet-100 md:px-3 md:py-1"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Experience() {
+  return (
+    <section id="experience" className="scroll-mt-24 border-t border-violet-200 py-10 md:py-24">
+      <SectionHeader eyebrow="Background" title="Experience & education" />
+      <div className="mt-6 space-y-6 md:mt-10 md:space-y-8">
+        {experience.map((e, i) => (
+          <div key={e.role + e.company} className="relative pl-5 md:pl-8">
+            <div className="absolute left-0 top-1 flex h-3.5 w-3.5 md:top-1.5 md:h-4 md:w-4 items-center justify-center rounded-full bg-white ring-2 ring-violet-500">
+              <div className="h-1 w-1 md:h-1.5 md:w-1.5 rounded-full bg-violet-600" />
+            </div>
+            {i < experience.length - 1 && (
+              <div className="absolute left-[6px] md:left-[7px] top-5 md:top-6 h-[calc(100%+1rem)] md:h-[calc(100%+1.5rem)] w-px bg-gradient-to-b from-violet-400 to-transparent" />
+            )}
+
+            <div className="flex flex-wrap items-baseline justify-between gap-1 md:gap-2">
+              <h3 className="text-xs md:text-base font-semibold text-zinc-900">{e.role}</h3>
+              <span className="rounded-full bg-white px-2 py-0.5 text-[9px] md:text-xs font-medium text-violet-800 shadow-sm md:px-2.5">
+                {e.period}
+              </span>
+            </div>
+            <p className="mt-0.5 text-[11px] md:text-sm font-semibold text-violet-700">{e.company}</p>
+            <p className="mt-1.5 text-[11px] md:text-sm leading-relaxed text-zinc-700">
+              {e.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Contact() {
   return (
     <section
       id="contact"
-      className="scroll-mt-24 border-t border-violet-200 py-14 md:py-24"
+      className="scroll-mt-24 border-t border-violet-200 py-10 md:py-24"
     >
-      <div className="relative overflow-hidden rounded-3xl border border-violet-300 bg-gradient-to-br from-violet-700 via-violet-800 to-fuchsia-800 px-6 py-12 shadow-2xl shadow-violet-400/50 md:px-12 md:py-16">
+      <div className="relative overflow-hidden rounded-3xl border border-violet-300 bg-gradient-to-br from-violet-700 via-violet-800 to-fuchsia-800 px-5 py-8 md:px-12 md:py-16 shadow-2xl shadow-violet-400/50">
         <div className="absolute inset-0 opacity-20 dot-grid" />
-        <div className="relative">
-          <p className="text-xs font-mono font-semibold uppercase tracking-widest text-violet-200">
+        <div className="relative text-center md:text-left flex flex-col items-center md:items-start">
+          <p className="text-[9px] md:text-xs font-mono font-semibold uppercase tracking-widest text-violet-200">
             Contact
           </p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+          <h2 className="mt-1 text-xl md:text-4xl font-semibold tracking-tight text-white">
             Let&apos;s build something together.
           </h2>
-          <p className="mt-3 max-w-xl text-violet-100">
+          <p className="mt-2 max-w-xl text-xs md:text-base text-violet-100">
             Have a project, a role, or an internship in mind? I reply within 24 hours.
           </p>
 
-          <div className="mt-6 flex flex-wrap items-center gap-3">
+          <div className="mt-5 flex flex-col md:flex-row items-center gap-2 md:gap-3 w-full md:w-auto">
             <CopyEmail />
-            <a
-              href={siteConfig.linkedin}
-              className="rounded-full border border-white/40 bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20"
-            >
-              LinkedIn
-            </a>
-            <a
-              href={siteConfig.github}
-              className="rounded-full border border-white/40 bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20"
-            >
-              GitHub
-            </a>
+            <div className="flex gap-2 md:gap-3 w-full md:w-auto">
+              <a
+                href={siteConfig.linkedin}
+                className="flex-1 md:flex-none text-center rounded-full border border-white/40 bg-white/10 px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+              >
+                LinkedIn
+              </a>
+              <a
+                href={siteConfig.github}
+                className="flex-1 md:flex-none text-center rounded-full border border-white/40 bg-white/10 px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+              >
+                GitHub
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -622,10 +609,44 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="border-t border-violet-200 bg-white/50">
-      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-6 py-8 text-xs font-medium text-zinc-700 md:flex-row">
-        <p>© 2026 {siteConfig.name}. All rights reserved.</p>
-        <p>Built with Next.js &amp; Tailwind.</p>
+    <footer className="relative w-full overflow-hidden bg-[#1e1e24] bg-cover bg-center border-t border-white/10">
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80')" }}
+      />
+      <div className="absolute inset-0 z-0 bg-violet-950/90 mix-blend-multiply" />
+
+      <div className="relative z-10 mx-auto max-w-[1440px] px-4 py-10 md:px-8 md:py-16">
+        <div className="flex flex-col items-center justify-between gap-6 border-b border-white/10 pb-8 md:flex-row md:items-start md:gap-10 md:pb-10">
+          
+          <div className="max-w-sm text-center md:text-left">
+            <a href="#home" className="text-lg md:text-2xl font-bold tracking-tight text-white">
+              {siteConfig.name}
+            </a>
+            <p className="mt-2 text-[11px] md:text-sm leading-relaxed text-violet-200">
+              Building mobile apps with AI built in. Focused on fintech, financial inclusion, and creating real impact.
+            </p>
+          </div>
+
+          <div className="flex gap-10 md:gap-16 text-center md:text-left">
+            <div className="flex flex-col gap-2 md:gap-3">
+              <span className="text-[9px] md:text-xs font-semibold uppercase tracking-wider text-violet-400">Navigation</span>
+              <a href="#home" className="text-[11px] md:text-sm text-white hover:text-fuchsia-400 transition-colors">Home</a>
+              <a href="#about" className="text-[11px] md:text-sm text-white hover:text-fuchsia-400 transition-colors">About</a>
+              <a href="#work" className="text-[11px] md:text-sm text-white hover:text-fuchsia-400 transition-colors">Work</a>
+            </div>
+            <div className="flex flex-col gap-2 md:gap-3">
+              <span className="text-[9px] md:text-xs font-semibold uppercase tracking-wider text-violet-400">Connect</span>
+              <a href={siteConfig.linkedin} target="_blank" rel="noreferrer" className="text-[11px] md:text-sm text-white hover:text-fuchsia-400 transition-colors">LinkedIn</a>
+              <a href={siteConfig.github} target="_blank" rel="noreferrer" className="text-[11px] md:text-sm text-white hover:text-fuchsia-400 transition-colors">GitHub</a>
+              <a href={`mailto:${siteConfig.email}`} className="text-[11px] md:text-sm text-white hover:text-fuchsia-400 transition-colors">Email</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 flex flex-col items-center justify-center gap-4 text-[9px] md:text-xs font-medium text-violet-300 md:mt-8">
+          <p>© 2026 {siteConfig.name}. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   );
@@ -634,10 +655,10 @@ function Footer() {
 function SectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div>
-      <p className="text-xs font-mono font-semibold uppercase tracking-widest text-violet-700">
+      <p className="text-[9px] md:text-xs font-mono font-semibold uppercase tracking-widest text-violet-700">
         {eyebrow}
       </p>
-      <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-900 md:text-4xl">
+      <h2 className="mt-1 text-xl md:mt-2 md:text-4xl font-semibold tracking-tight text-zinc-900">
         {title}
       </h2>
     </div>

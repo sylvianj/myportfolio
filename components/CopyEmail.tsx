@@ -17,19 +17,19 @@ export default function CopyEmail() {
   };
 
   return (
-    <div className="inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/10 px-4 py-2 backdrop-blur-sm">
+    <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 rounded-2xl sm:rounded-full border border-white/25 bg-white/10 px-4 py-2.5 backdrop-blur-sm max-w-full">
       <a
         href={`mailto:${siteConfig.email}`}
-        className="text-sm font-semibold text-white underline-offset-4 transition-colors hover:text-violet-100 hover:underline md:text-base"
+        className="text-sm font-semibold text-white underline-offset-4 transition-colors hover:text-violet-100 hover:underline break-all text-center"
       >
         {siteConfig.email}
       </a>
-      <span className="h-4 w-px bg-white/25" />
+      <span className="hidden sm:block h-4 w-px bg-white/25" />
       <button
         onClick={handleCopy}
-        className="text-sm font-medium text-violet-100 transition-colors hover:text-white"
+        className="text-sm font-semibold text-fuchsia-300 transition-colors hover:text-white"
       >
-        {copied ? "Copied" : "Copy"}
+        {copied ? "Copied!" : "Copy"}
       </button>
     </div>
   );
