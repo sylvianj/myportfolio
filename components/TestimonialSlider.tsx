@@ -7,13 +7,13 @@ const testimonials = [
     name: "GDG Community Member",
     title: "Ai/ML Lead",
     quote: "As our Mobile Track Lead, Sylvia broke down Kotlin and Jetpack concepts in a way that finally made them click. She's an incredible mentor and community leader.",
-    image: "https://images.unsplash.com/photo-1531123897727-8f129e1bfd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    image: "testimonial-1.jpg",
   },
   {
     name: "Nelly Bonareri",
     title: "Team Lead, Branch HR System",
     quote: "Working with Sylvia on the HR platform was seamless. She handled the React frontend with incredible attention to detail and ensured the Python API integration was flawless.",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    image: "testimonial-2.jpg",
   },
   
 ];
