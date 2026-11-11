@@ -143,6 +143,13 @@ export const experience = [
       "Lead the mobile development track: organizing workshops, mentoring students in Android, and running hands-on sessions on Kotlin and Jetpack.",
   },
   {
+    role: "Logistics Manager",
+    company: "SheCode Africa, Chuka Chapter",
+    period: "2023 - Present",
+    description:
+      "Coordinate logistics for chapter events, workshops, and hackathons. Manage resources, venue setups, and scheduling to ensure smooth execution of community activities for women in tech.",
+  },
+  {
     role: "Android Developer",
     company: "SheLoans (Independent Project)",
     period: "2024 - Present",
@@ -155,13 +162,6 @@ export const experience = [
     period: "2024",
     description:
       "Implemented role-based dashboards in React for HR executives and employees, connected to a Python backend.",
-  },
-  {
-    role: "Web Developer - Volunteer",
-    company: "SheCode Africa, Chuka Chapter",
-    period: "2024",
-    description:
-      "Built the chapter's public website to showcase programs and opportunities for women in tech.",
   },
   {
     role: "Software Developer - Attachment",

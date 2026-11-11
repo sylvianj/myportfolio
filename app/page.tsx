@@ -3,6 +3,7 @@ import CopyEmail from "@/components/CopyEmail";
 import Typewriter from "@/components/Typewriter";
 import ProjectCarousel from "@/components/ProjectCarousel";
 import TestimonialSlider from "@/components/TestimonialSlider";
+import ScrollToTop from "@/components/ScrollToTop"; 
 import {
   siteConfig,
   services,
@@ -38,6 +39,8 @@ export default function Home() {
       </main>
       
       <Footer />
+
+      <ScrollToTop />
     </>
   );
 }
@@ -192,13 +195,12 @@ const skillIcons = [
   <IconWrench key="wrench" />,
 ];
 
-/* ---------------- Sections ---------------- */
+
 
 function Hero() {
   return (
     <section id="home" className="relative w-full bg-[#1e1e24] pt-32 pb-16 md:pt-40 md:pb-28">
       <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-10 px-4 md:px-8 md:flex-row">
-        
         
         <div className="w-full md:w-3/5 text-center md:text-left">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
@@ -230,7 +232,6 @@ function Hero() {
           </div>
         </div>
 
-        
         <div className="hidden md:flex relative w-full justify-center md:w-2/5 md:justify-end">
           <div className="relative h-80 w-80 md:h-[450px] md:w-[400px]">
             <img
@@ -250,7 +251,7 @@ function Stats() {
   const stats = [
     { value: "4", label: "Projects Shipped" },
     { value: "6+", label: "Technologies" },
-    { value: "1", label: "Leadership Role" },
+    { value: "2", label: "Leadership Roles" }, 
     { value: "3", label: "Months Industry Exp." },
   ];
   return (
@@ -426,7 +427,7 @@ function Projects() {
                   </div>
                 )}
 
-                
+               
                 <div className="flex-1 w-full">
                   <p className="text-sm md:text-base leading-relaxed text-zinc-700">
                     {p.description}
