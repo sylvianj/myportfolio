@@ -42,7 +42,7 @@ export default function Home() {
   );
 }
 
-
+/* ---------------- Icons ---------------- */
 
 function IconMobile() {
   return (
@@ -192,45 +192,47 @@ const skillIcons = [
   <IconWrench key="wrench" />,
 ];
 
+/* ---------------- Sections ---------------- */
 
 function Hero() {
   return (
-    <section id="home" className="relative w-full bg-[#1e1e24] pt-28 pb-16 md:pt-40 md:pb-28">
-      <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-8 px-4 md:px-8 md:flex-row md:gap-12">
+    <section id="home" className="relative w-full bg-[#1e1e24] pt-32 pb-16 md:pt-40 md:pb-28">
+      <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-10 px-4 md:px-8 md:flex-row">
         
+        {/* TEXT SECTION - Centered on mobile, left-aligned on desktop */}
         <div className="w-full md:w-3/5 text-center md:text-left">
-          <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
             Welcome to my world
           </p>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-white md:mt-6 md:text-7xl">
+          <h1 className="mt-4 text-4xl font-bold tracking-tight text-white md:mt-6 md:text-7xl">
             Hi, I&apos;m <span className="text-fuchsia-500">Sylvia Njoki</span>
           </h1>
-          <div className="mt-3 flex justify-center md:justify-start text-xl font-semibold md:text-5xl">
+          <div className="mt-3 flex justify-center md:justify-start text-2xl font-semibold md:text-5xl">
             <Typewriter />
           </div>
-          <p className="mt-5 text-sm leading-relaxed text-zinc-400 md:mt-8 md:text-base text-left md:max-w-lg mx-auto md:mx-0">
+          <p className="mt-6 text-sm leading-relaxed text-zinc-400 md:mt-8 md:text-base max-w-lg mx-auto md:mx-0 text-left md:text-left">
             {siteConfig.description}
           </p>
 
-          <div className="mt-8 flex justify-center gap-3 md:justify-start md:mt-10 md:gap-4">
+          <div className="mt-8 flex justify-center gap-4 md:justify-start md:mt-10">
             <a
               href="#work"
-              className="rounded-full bg-fuchsia-500 px-5 py-2.5 text-xs font-semibold text-white shadow-lg shadow-fuchsia-500/30 transition-all hover:-translate-y-0.5 hover:bg-fuchsia-600 md:px-6 md:py-3 md:text-sm"
+              className="rounded-full bg-fuchsia-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/30 transition-all hover:-translate-y-0.5 hover:bg-fuchsia-600"
             >
               View My Work
             </a>
             <a
               href={siteConfig.resumeUrl}
-              className="rounded-full border border-zinc-700 bg-transparent px-5 py-2.5 text-xs font-semibold text-white transition-all hover:bg-zinc-800 md:px-6 md:py-3 md:text-sm"
+              className="rounded-full border border-zinc-700 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-zinc-800"
             >
               Resume
             </a>
           </div>
         </div>
 
-        <div className="relative flex w-full justify-center md:w-2/5 md:justify-end">
-          {/* Reduced the mobile image size to save vertical space */}
-          <div className="relative h-52 w-52 md:h-[450px] md:w-[400px]">
+        {/* IMAGE SECTION - Hidden on mobile (hidden), visible on desktop (md:flex) */}
+        <div className="hidden md:flex relative w-full justify-center md:w-2/5 md:justify-end">
+          <div className="relative h-80 w-80 md:h-[450px] md:w-[400px]">
             <img
               src="/sylvia-main.jpg"
               alt="Sylvia Njoki"
@@ -261,10 +263,10 @@ function Stats() {
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
-              <p className="mb-1 text-2xl font-bold text-white md:text-6xl">
+              <p className="mb-1 text-3xl font-bold text-white md:text-6xl">
                 {s.value}
               </p>
-              <p className="text-[9px] font-medium uppercase tracking-wider text-violet-200 md:text-sm">
+              <p className="text-[10px] font-medium uppercase tracking-wider text-violet-200 md:text-sm">
                 {s.label}
               </p>
             </div>
@@ -281,18 +283,18 @@ function About() {
       <SectionHeader eyebrow="About" title="A little about me" />
       <div className="mt-6 grid gap-6 md:mt-10 md:gap-10 md:grid-cols-3">
         <div className="md:col-span-2 space-y-4 text-zinc-700">
-          <p className="text-xs md:text-base leading-relaxed">
+          <p className="text-sm md:text-base leading-relaxed">
             I&apos;m Sylvia Njoki, a mobile and full-stack developer based in
             Kasarani, Nairobi. My strongest work is Android - Kotlin apps with
             backend integrations and AI features woven in.
           </p>
-          <p className="text-xs md:text-base leading-relaxed">
+          <p className="text-sm md:text-base leading-relaxed">
             My flagship project, SheLoans, gives women access to credit without
             land collateral by combining bank APIs, M-Pesa, and an internal
             credit-scoring engine. I&apos;ve also built web dashboards, an ML
             churn model, and a community site for SheCode Africa.
           </p>
-          <p className="text-xs md:text-base leading-relaxed">
+          <p className="text-sm md:text-base leading-relaxed">
             Currently open to{" "}
             <span className="font-semibold text-zinc-900">freelance projects</span>,{" "}
             <span className="font-semibold text-zinc-900">full-time roles</span>, and{" "}
@@ -300,13 +302,13 @@ function About() {
             especially in fintech, mobile, or AI.
           </p>
         </div>
-        <div className="relative overflow-hidden rounded-2xl border border-violet-300 bg-white p-5 md:p-6 shadow-sm shadow-violet-200">
+        <div className="relative overflow-hidden rounded-2xl border border-violet-300 bg-white p-6 shadow-sm shadow-violet-200">
           <div className="absolute inset-0 opacity-30 dot-grid" />
           <div className="relative">
-            <p className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-violet-800">
+            <p className="text-xs font-semibold uppercase tracking-wider text-violet-800">
               Quick facts
             </p>
-            <ul className="mt-3 space-y-3 text-xs md:text-sm font-medium text-zinc-800">
+            <ul className="mt-4 space-y-3 text-sm font-medium text-zinc-800">
               <li className="flex items-center gap-2">
                 <span className="text-violet-600">
                   <IconMapPin />
@@ -347,16 +349,16 @@ function Services() {
         {services.map((s, i) => (
           <div
             key={s.title}
-            className="group relative overflow-hidden rounded-2xl border border-violet-200 bg-white p-5 md:p-6 shadow-sm shadow-violet-200/60 transition-all hover:-translate-y-1 hover:border-violet-400 hover:shadow-xl hover:shadow-violet-300/60"
+            className="group relative overflow-hidden rounded-2xl border border-violet-200 bg-white p-6 shadow-sm shadow-violet-200/60 transition-all hover:-translate-y-1 hover:border-violet-400 hover:shadow-xl hover:shadow-violet-300/60"
           >
             <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br from-violet-200 to-fuchsia-100 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
 
             <div className="relative">
-              <div className="inline-flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-violet-300/50">
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-violet-300/50">
                 {serviceIcons[i]}
               </div>
-              <h3 className="mt-4 text-sm md:text-base font-semibold text-zinc-900">{s.title}</h3>
-              <p className="mt-2 text-xs md:text-sm leading-relaxed text-zinc-700">
+              <h3 className="mt-5 text-base font-semibold text-zinc-900">{s.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-700">
                 {s.description}
               </p>
             </div>
@@ -388,18 +390,18 @@ function Projects() {
                 : "border-violet-200 shadow-violet-200/60 hover:border-violet-300 hover:shadow-xl hover:shadow-violet-300/60"
             }`}
           >
-            <div className={`relative h-20 bg-gradient-to-br ${gradients[i % gradients.length]} md:h-32`}>
+            <div className={`relative h-24 bg-gradient-to-br ${gradients[i % gradients.length]} md:h-32`}>
               <div className="absolute inset-0 opacity-20 dot-grid" />
               <div className="relative flex h-full items-center justify-between px-4 md:px-8">
                 <div className="flex items-center gap-3 md:gap-4">
-                  <div className="flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-xl md:rounded-2xl bg-white/20 text-lg md:text-2xl font-bold text-white backdrop-blur-sm ring-1 ring-white/30">
+                  <div className="flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-xl md:rounded-2xl bg-white/20 text-xl md:text-2xl font-bold text-white backdrop-blur-sm ring-1 ring-white/30">
                     {p.title.charAt(0)}
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-white md:text-2xl">
+                    <h3 className="text-base font-semibold text-white md:text-2xl">
                       {p.title}
                     </h3>
-                    <p className="text-[9px] md:text-sm font-medium text-white/85">
+                    <p className="text-[10px] md:text-sm font-medium text-white/85">
                       {p.subtitle}
                     </p>
                   </div>
@@ -415,39 +417,39 @@ function Projects() {
 
             <div className="p-4 md:p-8">
               
-              <div className="flex flex-col md:flex-row gap-5 md:gap-8 items-start">
+              <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
                 
-                
+                {/* LEFT SIDE: CAROUSEL */}
                 {p.screenshots && p.screenshots.length > 0 && (
                   <div className="w-full md:w-[220px] shrink-0 flex justify-center md:justify-start">
                     <ProjectCarousel images={p.screenshots} title={p.title} />
                   </div>
                 )}
 
-               
+                {/* RIGHT SIDE: TEXT CONTENT */}
                 <div className="flex-1 w-full">
-                  <p className="text-xs md:text-base leading-relaxed text-zinc-700">
+                  <p className="text-sm md:text-base leading-relaxed text-zinc-700">
                     {p.description}
                   </p>
 
-                  <div className="mt-4 grid gap-4 md:mt-6 md:gap-6 md:grid-cols-3">
+                  <div className="mt-5 grid gap-4 md:mt-6 md:gap-6 md:grid-cols-3">
                     <Field label="Role" value={p.role} />
                     <Field label="Problem" value={p.problem} />
                     <Field label="Result" value={p.result} />
                   </div>
 
-                  <div className="mt-4 flex flex-wrap gap-1.5 md:mt-8 md:gap-2">
+                  <div className="mt-5 flex flex-wrap gap-2 md:mt-8">
                     {p.tech.map((t) => (
                       <span
                         key={t}
-                        className="rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[9px] md:text-xs font-semibold text-violet-800 md:px-3 md:py-1"
+                        className="rounded-full border border-violet-200 bg-violet-50 px-2.5 py-1 text-[10px] md:text-xs font-semibold text-violet-800 md:px-3"
                       >
                         {t}
                       </span>
                     ))}
                   </div>
 
-                  <div className="mt-5 flex flex-wrap gap-4 text-xs md:mt-8 md:gap-6 md:text-sm">
+                  <div className="mt-6 flex flex-wrap gap-4 text-sm md:mt-8 md:gap-6">
                     {p.links.github && (
                       <a
                         href={p.links.github}
@@ -486,10 +488,10 @@ function Projects() {
 function Field({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-[9px] md:text-xs font-semibold uppercase tracking-wider text-violet-700">
+      <p className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-violet-700">
         {label}
       </p>
-      <p className="mt-1 text-[11px] md:text-sm text-zinc-700">{value}</p>
+      <p className="mt-1 text-xs md:text-sm text-zinc-700">{value}</p>
     </div>
   );
 }
@@ -502,25 +504,25 @@ function Skills() {
         {skillGroups.map((g, i) => (
           <div
             key={g.label}
-            className="group relative overflow-hidden rounded-2xl border border-violet-200 bg-white p-4 md:p-6 shadow-sm shadow-violet-200/60 transition-all hover:-translate-y-1 hover:border-violet-400 hover:shadow-xl hover:shadow-violet-300/60"
+            className="group relative overflow-hidden rounded-2xl border border-violet-200 bg-white p-5 md:p-6 shadow-sm shadow-violet-200/60 transition-all hover:-translate-y-1 hover:border-violet-400 hover:shadow-xl hover:shadow-violet-300/60"
           >
             <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br from-violet-200 to-fuchsia-100 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
 
             <div className="relative">
-              <div className="flex items-center gap-2 md:gap-3">
-                <div className="inline-flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-md shadow-violet-300/50">
+              <div className="flex items-center gap-3">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-md shadow-violet-300/50">
                   {skillIcons[i % skillIcons.length]}
                 </div>
-                <h3 className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-violet-800">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-violet-800">
                   {g.label}
                 </h3>
               </div>
 
-              <div className="mt-3 flex flex-wrap gap-1.5 md:mt-4 md:gap-2">
+              <div className="mt-4 flex flex-wrap gap-2">
                 {g.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[9px] md:text-xs font-semibold text-violet-800 transition-colors hover:border-violet-400 hover:bg-violet-100 md:px-3 md:py-1"
+                    className="rounded-full border border-violet-200 bg-violet-50 px-2.5 py-1 text-[10px] md:text-xs font-semibold text-violet-800 transition-colors hover:border-violet-400 hover:bg-violet-100 md:px-3"
                   >
                     {item}
                   </span>
@@ -540,22 +542,22 @@ function Experience() {
       <SectionHeader eyebrow="Background" title="Experience & education" />
       <div className="mt-6 space-y-6 md:mt-10 md:space-y-8">
         {experience.map((e, i) => (
-          <div key={e.role + e.company} className="relative pl-5 md:pl-8">
-            <div className="absolute left-0 top-1 flex h-3.5 w-3.5 md:top-1.5 md:h-4 md:w-4 items-center justify-center rounded-full bg-white ring-2 ring-violet-500">
-              <div className="h-1 w-1 md:h-1.5 md:w-1.5 rounded-full bg-violet-600" />
+          <div key={e.role + e.company} className="relative pl-6 md:pl-8">
+            <div className="absolute left-0 top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-white ring-2 ring-violet-500">
+              <div className="h-1.5 w-1.5 rounded-full bg-violet-600" />
             </div>
             {i < experience.length - 1 && (
-              <div className="absolute left-[6px] md:left-[7px] top-5 md:top-6 h-[calc(100%+1rem)] md:h-[calc(100%+1.5rem)] w-px bg-gradient-to-b from-violet-400 to-transparent" />
+              <div className="absolute left-[7px] top-6 h-[calc(100%+1.5rem)] w-px bg-gradient-to-b from-violet-400 to-transparent" />
             )}
 
-            <div className="flex flex-wrap items-baseline justify-between gap-1 md:gap-2">
-              <h3 className="text-xs md:text-base font-semibold text-zinc-900">{e.role}</h3>
-              <span className="rounded-full bg-white px-2 py-0.5 text-[9px] md:text-xs font-medium text-violet-800 shadow-sm md:px-2.5">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 className="text-sm md:text-base font-semibold text-zinc-900">{e.role}</h3>
+              <span className="rounded-full bg-white px-2 py-0.5 text-[10px] md:text-xs font-medium text-violet-800 shadow-sm md:px-2.5">
                 {e.period}
               </span>
             </div>
-            <p className="mt-0.5 text-[11px] md:text-sm font-semibold text-violet-700">{e.company}</p>
-            <p className="mt-1.5 text-[11px] md:text-sm leading-relaxed text-zinc-700">
+            <p className="mt-1 text-xs md:text-sm font-semibold text-violet-700">{e.company}</p>
+            <p className="mt-2 text-xs md:text-sm leading-relaxed text-zinc-700">
               {e.description}
             </p>
           </div>
@@ -571,31 +573,31 @@ function Contact() {
       id="contact"
       className="scroll-mt-24 border-t border-violet-200 py-10 md:py-24"
     >
-      <div className="relative overflow-hidden rounded-3xl border border-violet-300 bg-gradient-to-br from-violet-700 via-violet-800 to-fuchsia-800 px-5 py-8 md:px-12 md:py-16 shadow-2xl shadow-violet-400/50">
+      <div className="relative overflow-hidden rounded-3xl border border-violet-300 bg-gradient-to-br from-violet-700 via-violet-800 to-fuchsia-800 px-5 py-10 md:px-12 md:py-16 shadow-2xl shadow-violet-400/50">
         <div className="absolute inset-0 opacity-20 dot-grid" />
         <div className="relative text-center md:text-left flex flex-col items-center md:items-start">
-          <p className="text-[9px] md:text-xs font-mono font-semibold uppercase tracking-widest text-violet-200">
+          <p className="text-[10px] md:text-xs font-mono font-semibold uppercase tracking-widest text-violet-200">
             Contact
           </p>
-          <h2 className="mt-1 text-xl md:text-4xl font-semibold tracking-tight text-white">
+          <h2 className="mt-2 text-2xl md:text-4xl font-semibold tracking-tight text-white">
             Let&apos;s build something together.
           </h2>
-          <p className="mt-2 max-w-xl text-xs md:text-base text-violet-100">
+          <p className="mt-3 max-w-xl text-sm md:text-base text-violet-100">
             Have a project, a role, or an internship in mind? I reply within 24 hours.
           </p>
 
-          <div className="mt-5 flex flex-col md:flex-row items-center gap-2 md:gap-3 w-full md:w-auto">
+          <div className="mt-6 flex flex-col md:flex-row items-center gap-3 w-full md:w-auto">
             <CopyEmail />
-            <div className="flex gap-2 md:gap-3 w-full md:w-auto">
+            <div className="flex gap-3 w-full md:w-auto">
               <a
                 href={siteConfig.linkedin}
-                className="flex-1 md:flex-none text-center rounded-full border border-white/40 bg-white/10 px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+                className="flex-1 md:flex-none text-center rounded-full border border-white/40 bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20"
               >
                 LinkedIn
               </a>
               <a
                 href={siteConfig.github}
-                className="flex-1 md:flex-none text-center rounded-full border border-white/40 bg-white/10 px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+                className="flex-1 md:flex-none text-center rounded-full border border-white/40 bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20"
               >
                 GitHub
               </a>
@@ -616,35 +618,35 @@ function Footer() {
       />
       <div className="absolute inset-0 z-0 bg-violet-950/90 mix-blend-multiply" />
 
-      <div className="relative z-10 mx-auto max-w-[1440px] px-4 py-10 md:px-8 md:py-16">
-        <div className="flex flex-col items-center justify-between gap-6 border-b border-white/10 pb-8 md:flex-row md:items-start md:gap-10 md:pb-10">
+      <div className="relative z-10 mx-auto max-w-[1440px] px-4 py-12 md:px-8 md:py-16">
+        <div className="flex flex-col items-center justify-between gap-8 border-b border-white/10 pb-10 md:flex-row md:items-start">
           
           <div className="max-w-sm text-center md:text-left">
-            <a href="#home" className="text-lg md:text-2xl font-bold tracking-tight text-white">
+            <a href="#home" className="text-xl md:text-2xl font-bold tracking-tight text-white">
               {siteConfig.name}
             </a>
-            <p className="mt-2 text-[11px] md:text-sm leading-relaxed text-violet-200">
+            <p className="mt-3 text-xs md:text-sm leading-relaxed text-violet-200">
               Building mobile apps with AI built in. Focused on fintech, financial inclusion, and creating real impact.
             </p>
           </div>
 
-          <div className="flex gap-10 md:gap-16 text-center md:text-left">
-            <div className="flex flex-col gap-2 md:gap-3">
-              <span className="text-[9px] md:text-xs font-semibold uppercase tracking-wider text-violet-400">Navigation</span>
-              <a href="#home" className="text-[11px] md:text-sm text-white hover:text-fuchsia-400 transition-colors">Home</a>
-              <a href="#about" className="text-[11px] md:text-sm text-white hover:text-fuchsia-400 transition-colors">About</a>
-              <a href="#work" className="text-[11px] md:text-sm text-white hover:text-fuchsia-400 transition-colors">Work</a>
+          <div className="flex gap-12 md:gap-16 text-center md:text-left">
+            <div className="flex flex-col gap-3">
+              <span className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-violet-400">Navigation</span>
+              <a href="#home" className="text-xs md:text-sm text-white hover:text-fuchsia-400 transition-colors">Home</a>
+              <a href="#about" className="text-xs md:text-sm text-white hover:text-fuchsia-400 transition-colors">About</a>
+              <a href="#work" className="text-xs md:text-sm text-white hover:text-fuchsia-400 transition-colors">Work</a>
             </div>
-            <div className="flex flex-col gap-2 md:gap-3">
-              <span className="text-[9px] md:text-xs font-semibold uppercase tracking-wider text-violet-400">Connect</span>
-              <a href={siteConfig.linkedin} target="_blank" rel="noreferrer" className="text-[11px] md:text-sm text-white hover:text-fuchsia-400 transition-colors">LinkedIn</a>
-              <a href={siteConfig.github} target="_blank" rel="noreferrer" className="text-[11px] md:text-sm text-white hover:text-fuchsia-400 transition-colors">GitHub</a>
-              <a href={`mailto:${siteConfig.email}`} className="text-[11px] md:text-sm text-white hover:text-fuchsia-400 transition-colors">Email</a>
+            <div className="flex flex-col gap-3">
+              <span className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-violet-400">Connect</span>
+              <a href={siteConfig.linkedin} target="_blank" rel="noreferrer" className="text-xs md:text-sm text-white hover:text-fuchsia-400 transition-colors">LinkedIn</a>
+              <a href={siteConfig.github} target="_blank" rel="noreferrer" className="text-xs md:text-sm text-white hover:text-fuchsia-400 transition-colors">GitHub</a>
+              <a href={`mailto:${siteConfig.email}`} className="text-xs md:text-sm text-white hover:text-fuchsia-400 transition-colors">Email</a>
             </div>
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col items-center justify-center gap-4 text-[9px] md:text-xs font-medium text-violet-300 md:mt-8">
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 text-[10px] md:text-xs font-medium text-violet-300">
           <p>© 2026 {siteConfig.name}. All rights reserved.</p>
         </div>
       </div>
@@ -655,10 +657,10 @@ function Footer() {
 function SectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div>
-      <p className="text-[9px] md:text-xs font-mono font-semibold uppercase tracking-widest text-violet-700">
+      <p className="text-[10px] md:text-xs font-mono font-semibold uppercase tracking-widest text-violet-700">
         {eyebrow}
       </p>
-      <h2 className="mt-1 text-xl md:mt-2 md:text-4xl font-semibold tracking-tight text-zinc-900">
+      <h2 className="mt-1 md:mt-2 text-2xl md:text-4xl font-semibold tracking-tight text-zinc-900">
         {title}
       </h2>
     </div>
