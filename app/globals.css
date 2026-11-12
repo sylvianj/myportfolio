@@ -10,6 +10,12 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Continuous up and down float */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -30,13 +36,11 @@ img {
   color: #4c1d95;
 }
 
-/* Dot-grid pattern */
 .dot-grid {
   background-image: radial-gradient(circle, rgba(124, 58, 237, 0.18) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 
-/* Gradient text */
 .gradient-text {
   background: linear-gradient(90deg, #7c3aed 0%, #a855f7 60%, #d946ef 100%);
   -webkit-background-clip: text;
@@ -45,9 +49,13 @@ img {
   color: transparent;
 }
 
-
 .hero-glow {
   background:
     radial-gradient(ellipse 60% 50% at 50% 0%, rgba(168, 85, 247, 0.15), transparent 70%),
     radial-gradient(ellipse 40% 40% at 80% 20%, rgba(124, 58, 237, 0.10), transparent 70%);
+}
+
+/* The float animation class */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }

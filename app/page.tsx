@@ -3,7 +3,8 @@ import CopyEmail from "@/components/CopyEmail";
 import Typewriter from "@/components/Typewriter";
 import ProjectCarousel from "@/components/ProjectCarousel";
 import TestimonialSlider from "@/components/TestimonialSlider";
-import ScrollToTop from "@/components/ScrollToTop"; 
+import ScrollToTop from "@/components/ScrollToTop";
+import Animated3DImage from "@/components/Animated3DImage";
 import {
   siteConfig,
   services,
@@ -39,13 +40,12 @@ export default function Home() {
       </main>
       
       <Footer />
-
       <ScrollToTop />
     </>
   );
 }
 
-
+/* ---------------- Icons ---------------- */
 
 function IconMobile() {
   return (
@@ -195,14 +195,17 @@ const skillIcons = [
   <IconWrench key="wrench" />,
 ];
 
-
+/* ---------------- Sections ---------------- */
 
 function Hero() {
   return (
-    <section id="home" className="relative w-full bg-[#1e1e24] pt-32 pb-16 md:pt-40 md:pb-28">
+    <section id="home" className="relative w-full bg-[#1e1e24] pt-32 pb-16 md:pt-40 md:pb-28 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 -z-10 hero-glow" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full opacity-20 [mask-image:linear-gradient(to_bottom,black,transparent_70%)] dot-grid" />
+
       <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-10 px-4 md:px-8 md:flex-row">
         
-        <div className="w-full md:w-3/5 text-center md:text-left">
+        <div className="w-full md:w-1/2 text-center md:text-left z-10">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
             Welcome to my world
           </p>
@@ -232,14 +235,11 @@ function Hero() {
           </div>
         </div>
 
-        <div className="hidden md:flex relative w-full justify-center md:w-2/5 md:justify-end">
-          <div className="relative h-80 w-80 md:h-[450px] md:w-[400px]">
-            <img
-              src="/sylvia-main.jpg"
-              alt="Sylvia Njoki"
-              className="h-full w-full rounded-2xl object-cover object-top shadow-2xl"
-            />
-          </div>
+        <div className="hidden md:flex relative w-full md:w-1/2 justify-center md:justify-end items-center">
+          <Animated3DImage 
+            src="/sylvia-main.jpg" 
+            alt="Sylvia Njoki" 
+          />
         </div>
 
       </div>
@@ -251,7 +251,7 @@ function Stats() {
   const stats = [
     { value: "4", label: "Projects Shipped" },
     { value: "6+", label: "Technologies" },
-    { value: "2", label: "Leadership Roles" }, 
+    { value: "2", label: "Leadership Roles" },
     { value: "3", label: "Months Industry Exp." },
   ];
   return (
@@ -420,14 +420,12 @@ function Projects() {
               
               <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
                 
-                
                 {p.screenshots && p.screenshots.length > 0 && (
                   <div className="w-full md:w-[220px] shrink-0 flex justify-center md:justify-start">
                     <ProjectCarousel images={p.screenshots} title={p.title} />
                   </div>
                 )}
 
-               
                 <div className="flex-1 w-full">
                   <p className="text-sm md:text-base leading-relaxed text-zinc-700">
                     {p.description}
