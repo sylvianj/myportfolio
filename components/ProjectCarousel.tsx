@@ -14,7 +14,7 @@ export default function ProjectCarousel({
   const [rotateY, setRotateY] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  // Auto-cycle images
+  
   useEffect(() => {
     if (images.length <= 1) return;
     
@@ -25,7 +25,7 @@ export default function ProjectCarousel({
     return () => clearInterval(interval);
   }, [images.length]);
 
-  // 3D Tilt Handlers
+  
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     
@@ -49,12 +49,12 @@ export default function ProjectCarousel({
   };
 
   return (
-    // OUTER DIV: Handles the continuous up/down floating animation
+   
     <div 
       className="flex items-center justify-center animate-float"
       style={{ perspective: "1000px" }}
     >
-      {/* INNER DIV: Handles the mouse-tracking tilt */}
+      
       <div
         ref={cardRef}
         onMouseMove={handleMouseMove}
@@ -76,7 +76,7 @@ export default function ProjectCarousel({
           />
         ))}
         
-        {/* Pagination dots */}
+        
         <div className="absolute bottom-4 left-0 right-0 z-20 flex justify-center gap-1.5">
           {images.map((_, idx) => (
             <button

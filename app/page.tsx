@@ -5,6 +5,8 @@ import ProjectCarousel from "@/components/ProjectCarousel";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import ScrollToTop from "@/components/ScrollToTop";
 import Animated3DImage from "@/components/Animated3DImage";
+import DotGrid from "@/components/DotGrid";
+import ParticleText from "@/components/ParticleText";
 import {
   siteConfig,
   services,
@@ -45,7 +47,7 @@ export default function Home() {
   );
 }
 
-/* ---------------- Icons ---------------- */
+
 
 function IconMobile() {
   return (
@@ -195,26 +197,46 @@ const skillIcons = [
   <IconWrench key="wrench" />,
 ];
 
-/* ---------------- Sections ---------------- */
 
 function Hero() {
   return (
     <section id="home" className="relative w-full bg-[#1e1e24] pt-32 pb-16 md:pt-40 md:pb-28 overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 -z-10 hero-glow" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full opacity-20 [mask-image:linear-gradient(to_bottom,black,transparent_70%)] dot-grid" />
+      
+      
+      <DotGrid />
 
-      <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-10 px-4 md:px-8 md:flex-row">
+      
+      <div className="pointer-events-none absolute inset-0 -z-10 hero-glow" />
+      
+      
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center justify-center gap-10 px-4 md:px-8 md:flex-row md:gap-16">
         
-        <div className="w-full md:w-1/2 text-center md:text-left z-10">
+        <div className="w-full md:w-1/2 text-center md:text-left pointer-events-auto">
+          
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
             Welcome to my world
           </p>
-          <h1 className="mt-4 text-4xl font-bold tracking-tight text-white md:mt-6 md:text-7xl">
-            Hi, I&apos;m <span className="text-fuchsia-500">Sylvia Njoki</span>
-          </h1>
-          <div className="mt-3 flex justify-center md:justify-start text-2xl font-semibold md:text-5xl">
+
+          <div className="mt-4 md:mt-6 flex flex-col items-center md:items-start text-4xl md:text-7xl font-bold tracking-tight text-white leading-tight">
+            <ParticleText 
+              text="Hi, I'm" 
+              className="h-12 md:h-20" 
+              fontSize="72"
+              color="#ffffff"
+            />
+            
+            <ParticleText 
+              text="Sylvia Njoki" 
+              className="h-12 md:h-20" 
+              fontSize="72"
+              color="#e879f9"
+            />
+          </div>
+
+          <div className="mt-4 flex justify-center md:justify-start text-xl font-semibold md:text-3xl">
             <Typewriter />
           </div>
+          
           <p className="mt-6 text-sm leading-relaxed text-zinc-400 md:mt-8 md:text-base max-w-lg mx-auto md:mx-0 text-left md:text-left">
             {siteConfig.description}
           </p>
@@ -235,7 +257,8 @@ function Hero() {
           </div>
         </div>
 
-        <div className="hidden md:flex relative w-full md:w-1/2 justify-center md:justify-end items-center">
+        
+        <div className="hidden md:flex relative w-full md:w-1/2 justify-center md:justify-center items-center pointer-events-auto">
           <Animated3DImage 
             src="/sylvia-main.jpg" 
             alt="Sylvia Njoki" 

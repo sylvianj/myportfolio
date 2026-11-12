@@ -17,7 +17,7 @@ export default function Animated3DImage({ src, alt }: { src: string; alt: string
     const mouseX = e.clientX - rect.left - width / 2;
     const mouseY = e.clientY - rect.top - height / 2;
     
-    // Calculate rotation degrees (max 15 degrees tilt)
+    
     const rY = (mouseX / (width / 2)) * 15;
     const rX = -(mouseY / (height / 2)) * 15;
     
@@ -31,12 +31,12 @@ export default function Animated3DImage({ src, alt }: { src: string; alt: string
   };
 
   return (
-    // OUTER DIV: Handles the continuous up/down floating animation
+    
     <div 
       className="flex items-center justify-center animate-float"
       style={{ perspective: "1000px" }}
     >
-      {/* INNER DIV: Handles the mouse-tracking tilt */}
+      
       <div
         ref={cardRef}
         onMouseMove={handleMouseMove}

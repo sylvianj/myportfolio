@@ -10,7 +10,7 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Continuous up and down float */
+
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-15px); }
@@ -55,7 +55,7 @@ img {
     radial-gradient(ellipse 40% 40% at 80% 20%, rgba(124, 58, 237, 0.10), transparent 70%);
 }
 
-/* The float animation class */
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
