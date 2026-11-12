@@ -47,7 +47,7 @@ export default function Home() {
   );
 }
 
-/* ---------------- Icons ---------------- */
+
 
 function IconMobile() {
   return (
@@ -197,7 +197,7 @@ const skillIcons = [
   <IconWrench key="wrench" />,
 ];
 
-/* ---------------- Sections ---------------- */
+
 
 function Hero() {
   return (
@@ -323,6 +323,8 @@ function About() {
             especially in fintech, mobile, or AI.
           </p>
         </div>
+        
+        
         <div className="relative overflow-hidden rounded-2xl border border-violet-300 bg-white p-6 shadow-sm shadow-violet-200">
           <div className="absolute inset-0 opacity-30 dot-grid" />
           <div className="relative">
@@ -331,27 +333,35 @@ function About() {
             </p>
             <ul className="mt-4 space-y-3 text-sm font-medium text-zinc-800">
               <li className="flex items-center gap-2">
-                <span className="text-violet-600">
-                  <IconMapPin />
-                </span>
+                <div className="[perspective:1000px]">
+                  <span className="text-violet-600 animate-flip-loop block" style={{ animationDelay: "0s" }}>
+                    <IconMapPin />
+                  </span>
+                </div>
                 {siteConfig.location}
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-violet-600">
-                  <IconBriefcase />
-                </span>
+                <div className="[perspective:1000px]">
+                  <span className="text-violet-600 animate-flip-loop block" style={{ animationDelay: "0.4s" }}>
+                    <IconBriefcase />
+                  </span>
+                </div>
                 Open to work
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-violet-600">
-                  <IconGlobe />
-                </span>
+                <div className="[perspective:1000px]">
+                  <span className="text-violet-600 animate-flip-loop block" style={{ animationDelay: "0.8s" }}>
+                    <IconGlobe />
+                  </span>
+                </div>
                 Remote-friendly
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-violet-600">
-                  <IconMobile />
-                </span>
+                <div className="[perspective:1000px]">
+                  <span className="text-violet-600 animate-flip-loop block" style={{ animationDelay: "1.2s" }}>
+                    <IconMobile />
+                  </span>
+                </div>
                 Android - Web - AI
               </li>
             </ul>
@@ -375,8 +385,14 @@ function Services() {
             <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br from-violet-200 to-fuchsia-100 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
 
             <div className="relative">
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-violet-300/50">
-                {serviceIcons[i]}
+              {/* Added perspective wrapper */}
+              <div className="[perspective:1000px]">
+                <div 
+                  className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-violet-300/50 animate-flip-loop"
+                  style={{ animationDelay: `${i * 0.6}s` }}
+                >
+                  {serviceIcons[i]}
+                </div>
               </div>
               <h3 className="mt-5 text-base font-semibold text-zinc-900">{s.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-zinc-700">
@@ -529,9 +545,17 @@ function Skills() {
 
             <div className="relative">
               <div className="flex items-center gap-3">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-md shadow-violet-300/50">
-                  {skillIcons[i % skillIcons.length]}
+                
+                
+                <div className="[perspective:1000px]">
+                  <div 
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-md shadow-violet-300/50 animate-flip-loop"
+                    style={{ animationDelay: `${i * 0.3}s` }}
+                  >
+                    {skillIcons[i % skillIcons.length]}
+                  </div>
                 </div>
+                
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-violet-800">
                   {g.label}
                 </h3>
