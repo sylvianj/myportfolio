@@ -34,6 +34,7 @@ export default function Home() {
         <Skills />
       </main>
 
+     
       <TestimonialSlider />
 
       <main className="mx-auto max-w-[1440px] px-4 md:px-8">
@@ -46,7 +47,6 @@ export default function Home() {
     </>
   );
 }
-
 
 
 function IconMobile() {
@@ -242,7 +242,7 @@ function Hero() {
           <div className="mt-8 flex justify-center gap-4 md:justify-start md:mt-10">
             <a
               href="#work"
-              className="rounded-full bg-fuchsia-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/30 transition-all hover:-translate-y-0.5 hover:bg-fuchsia-600"
+              className="rounded-full bg-violet-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-700/30 transition-all hover:-translate-y-0.5 hover:bg-violet-800"
             >
               View My Work
             </a>
@@ -324,8 +324,8 @@ function About() {
           </p>
         </div>
         
-        
-        <div className="relative overflow-hidden rounded-2xl border border-violet-300 bg-white p-6 shadow-sm shadow-violet-200">
+        {/* ROUNDED CONTAINER: Quick Facts */}
+        <div className="relative overflow-hidden rounded-2xl border border-violet-200 bg-white p-6 shadow-sm shadow-violet-200/50">
           <div className="absolute inset-0 opacity-30 dot-grid" />
           <div className="relative">
             <p className="text-xs font-semibold uppercase tracking-wider text-violet-800">
@@ -374,31 +374,33 @@ function About() {
 
 function Services() {
   return (
-    <section id="services" className="scroll-mt-24 border-t border-violet-200 py-10 md:py-24">
+    <section id="services" className="scroll-mt-24 border-t border-zinc-200 py-10 md:py-24">
       <SectionHeader eyebrow="Services" title="What I do" />
-      <div className="mt-6 grid gap-4 md:mt-10 md:gap-5 md:grid-cols-3">
+      
+      {/* LINE SEPARATOR LAYOUT */}
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
         {services.map((s, i) => (
-          <div
-            key={s.title}
-            className="group relative overflow-hidden rounded-2xl border border-violet-200 bg-white p-6 shadow-sm shadow-violet-200/60 transition-all hover:-translate-y-1 hover:border-violet-400 hover:shadow-xl hover:shadow-violet-300/60"
-          >
-            <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br from-violet-200 to-fuchsia-100 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
-
-            <div className="relative">
-              {/* Added perspective wrapper */}
-              <div className="[perspective:1000px]">
-                <div 
-                  className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-violet-300/50 animate-flip-loop"
-                  style={{ animationDelay: `${i * 0.6}s` }}
-                >
-                  {serviceIcons[i]}
-                </div>
+          <div key={s.title} className="relative pl-6 md:pl-8">
+            {/* The vertical line */}
+            <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-violet-500" />
+            {/* The hollow circle at the top */}
+            <div className="absolute left-[-6px] top-1 h-3.5 w-3.5 rounded-full border-[3px] border-violet-500 bg-white" />
+            
+            <div className="[perspective:1000px] mb-4">
+              <div 
+                className="inline-flex h-10 w-10 items-center justify-center bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-md shadow-violet-300/50 animate-flip-loop"
+                style={{ animationDelay: `${i * 0.6}s` }}
+              >
+                {serviceIcons[i]}
               </div>
-              <h3 className="mt-5 text-base font-semibold text-zinc-900">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-700">
-                {s.description}
-              </p>
             </div>
+
+            <h3 className="text-lg md:text-xl font-bold uppercase tracking-wide text-zinc-700">
+              {s.title}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-600 italic">
+              {s.description}
+            </p>
           </div>
         ))}
       </div>
@@ -407,13 +409,6 @@ function Services() {
 }
 
 function Projects() {
-  const gradients = [
-    "from-violet-700 via-violet-600 to-fuchsia-600",
-    "from-violet-600 via-violet-500 to-fuchsia-500",
-    "from-violet-700 via-indigo-600 to-violet-600",
-    "from-fuchsia-600 via-violet-600 to-violet-700",
-  ];
-
   return (
     <section id="work" className="scroll-mt-24 py-10 md:py-24">
       <SectionHeader eyebrow="Selected Work" title="Projects & case studies" />
@@ -423,22 +418,25 @@ function Projects() {
             key={p.title}
             className={`group overflow-hidden rounded-3xl border bg-white shadow-sm transition-all ${
               p.featured
-                ? "border-violet-400 shadow-lg shadow-violet-300/60 hover:shadow-xl hover:shadow-violet-400/60"
-                : "border-violet-200 shadow-violet-200/60 hover:border-violet-300 hover:shadow-xl hover:shadow-violet-300/60"
+                ? "border-violet-400 shadow-lg shadow-violet-200/60 hover:shadow-xl hover:shadow-violet-300/60"
+                : "border-zinc-200 shadow-zinc-200/60 hover:border-violet-300 hover:shadow-xl hover:shadow-violet-200/60"
             }`}
           >
-            <div className={`relative h-24 bg-gradient-to-br ${gradients[i % gradients.length]} md:h-32`}>
+            {/* ROUNDED CONTAINER HEADER: Dark background for Projects */}
+            <div className="relative h-24 md:h-32 bg-[#1e1e24] border-b border-zinc-800 overflow-hidden">
+              <div className="pointer-events-none absolute inset-0 hero-glow opacity-70" />
               <div className="absolute inset-0 opacity-20 dot-grid" />
+              
               <div className="relative flex h-full items-center justify-between px-4 md:px-8">
                 <div className="flex items-center gap-3 md:gap-4">
-                  <div className="flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-xl md:rounded-2xl bg-white/20 text-xl md:text-2xl font-bold text-white backdrop-blur-sm ring-1 ring-white/30">
+                  <div className="flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-xl md:rounded-2xl bg-gradient-to-br from-violet-600 to-fuchsia-600 text-xl md:text-2xl font-bold text-white shadow-lg shadow-violet-500/30 ring-1 ring-white/20">
                     {p.title.charAt(0)}
                   </div>
                   <div>
                     <h3 className="text-base font-semibold text-white md:text-2xl">
                       {p.title}
                     </h3>
-                    <p className="text-[10px] md:text-sm font-medium text-white/85">
+                    <p className="text-[10px] md:text-sm font-medium text-zinc-400">
                       {p.subtitle}
                     </p>
                   </div>
@@ -533,19 +531,20 @@ function Field({ label, value }: { label: string; value: string }) {
 
 function Skills() {
   return (
-    <section id="skills" className="scroll-mt-24 border-t border-violet-200 py-10 md:py-24">
+    <section id="skills" className="scroll-mt-24 border-t border-zinc-200 py-10 md:py-24">
       <SectionHeader eyebrow="Toolbox" title="Skills & technologies" />
+      
+      {/* ROUNDED CONTAINER: Skills */}
       <div className="mt-6 grid gap-4 md:mt-10 md:gap-5 md:grid-cols-2 lg:grid-cols-3">
         {skillGroups.map((g, i) => (
           <div
             key={g.label}
-            className="group relative overflow-hidden rounded-2xl border border-violet-200 bg-white p-5 md:p-6 shadow-sm shadow-violet-200/60 transition-all hover:-translate-y-1 hover:border-violet-400 hover:shadow-xl hover:shadow-violet-300/60"
+            className="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-white p-5 md:p-6 shadow-sm shadow-zinc-200/60 transition-all hover:-translate-y-1 hover:border-violet-300 hover:shadow-xl hover:shadow-violet-200/50"
           >
             <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br from-violet-200 to-fuchsia-100 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
 
             <div className="relative">
               <div className="flex items-center gap-3">
-                
                 
                 <div className="[perspective:1000px]">
                   <div 
@@ -565,7 +564,7 @@ function Skills() {
                 {g.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-violet-200 bg-violet-50 px-2.5 py-1 text-[10px] md:text-xs font-semibold text-violet-800 transition-colors hover:border-violet-400 hover:bg-violet-100 md:px-3"
+                    className="rounded-full border border-zinc-200 bg-zinc-50 px-2.5 py-1 text-[10px] md:text-xs font-semibold text-zinc-700 transition-colors hover:border-violet-400 hover:bg-violet-50 hover:text-violet-800 md:px-3"
                   >
                     {item}
                   </span>
@@ -581,7 +580,7 @@ function Skills() {
 
 function Experience() {
   return (
-    <section id="experience" className="scroll-mt-24 border-t border-violet-200 py-10 md:py-24">
+    <section id="experience" className="scroll-mt-24 border-t border-zinc-200 py-10 md:py-24">
       <SectionHeader eyebrow="Background" title="Experience & education" />
       <div className="mt-6 space-y-6 md:mt-10 md:space-y-8">
         {experience.map((e, i) => (
@@ -614,8 +613,9 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="scroll-mt-24 border-t border-violet-200 py-10 md:py-24"
+      className="scroll-mt-24 border-t border-zinc-200 py-10 md:py-24"
     >
+      
       <div className="relative overflow-hidden rounded-3xl border border-violet-300 bg-gradient-to-br from-violet-700 via-violet-800 to-fuchsia-800 px-5 py-10 md:px-12 md:py-16 shadow-2xl shadow-violet-400/50">
         <div className="absolute inset-0 opacity-20 dot-grid" />
         <div className="relative text-center md:text-left flex flex-col items-center md:items-start">
@@ -676,15 +676,15 @@ function Footer() {
           <div className="flex gap-12 md:gap-16 text-center md:text-left">
             <div className="flex flex-col gap-3">
               <span className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-violet-400">Navigation</span>
-              <a href="#home" className="text-xs md:text-sm text-white hover:text-fuchsia-400 transition-colors">Home</a>
-              <a href="#about" className="text-xs md:text-sm text-white hover:text-fuchsia-400 transition-colors">About</a>
-              <a href="#work" className="text-xs md:text-sm text-white hover:text-fuchsia-400 transition-colors">Work</a>
+              <a href="#home" className="text-xs md:text-sm text-white hover:text-violet-400 transition-colors">Home</a>
+              <a href="#about" className="text-xs md:text-sm text-white hover:text-violet-400 transition-colors">About</a>
+              <a href="#work" className="text-xs md:text-sm text-white hover:text-violet-400 transition-colors">Work</a>
             </div>
             <div className="flex flex-col gap-3">
               <span className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-violet-400">Connect</span>
-              <a href={siteConfig.linkedin} target="_blank" rel="noreferrer" className="text-xs md:text-sm text-white hover:text-fuchsia-400 transition-colors">LinkedIn</a>
-              <a href={siteConfig.github} target="_blank" rel="noreferrer" className="text-xs md:text-sm text-white hover:text-fuchsia-400 transition-colors">GitHub</a>
-              <a href={`mailto:${siteConfig.email}`} className="text-xs md:text-sm text-white hover:text-fuchsia-400 transition-colors">Email</a>
+              <a href={siteConfig.linkedin} target="_blank" rel="noreferrer" className="text-xs md:text-sm text-white hover:text-violet-400 transition-colors">LinkedIn</a>
+              <a href={siteConfig.github} target="_blank" rel="noreferrer" className="text-xs md:text-sm text-white hover:text-violet-400 transition-colors">GitHub</a>
+              <a href={`mailto:${siteConfig.email}`} className="text-xs md:text-sm text-white hover:text-violet-400 transition-colors">Email</a>
             </div>
           </div>
         </div>
