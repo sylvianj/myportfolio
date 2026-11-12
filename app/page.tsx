@@ -34,7 +34,6 @@ export default function Home() {
         <Skills />
       </main>
 
-     
       <TestimonialSlider />
 
       <main className="mx-auto max-w-[1440px] px-4 md:px-8">
@@ -47,6 +46,7 @@ export default function Home() {
     </>
   );
 }
+
 
 
 function IconMobile() {
@@ -240,9 +240,10 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex justify-center gap-4 md:justify-start md:mt-10">
+           
             <a
               href="#work"
-              className="rounded-full bg-violet-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-700/30 transition-all hover:-translate-y-0.5 hover:bg-violet-800"
+              className="rounded-full bg-fuchsia-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/30 transition-all hover:-translate-y-0.5 hover:bg-fuchsia-700"
             >
               View My Work
             </a>
@@ -324,7 +325,7 @@ function About() {
           </p>
         </div>
         
-        {/* ROUNDED CONTAINER: Quick Facts */}
+      
         <div className="relative overflow-hidden rounded-2xl border border-violet-200 bg-white p-6 shadow-sm shadow-violet-200/50">
           <div className="absolute inset-0 opacity-30 dot-grid" />
           <div className="relative">
@@ -377,13 +378,13 @@ function Services() {
     <section id="services" className="scroll-mt-24 border-t border-zinc-200 py-10 md:py-24">
       <SectionHeader eyebrow="Services" title="What I do" />
       
-      {/* LINE SEPARATOR LAYOUT */}
+      
       <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
         {services.map((s, i) => (
           <div key={s.title} className="relative pl-6 md:pl-8">
-            {/* The vertical line */}
+           
             <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-violet-500" />
-            {/* The hollow circle at the top */}
+           
             <div className="absolute left-[-6px] top-1 h-3.5 w-3.5 rounded-full border-[3px] border-violet-500 bg-white" />
             
             <div className="[perspective:1000px] mb-4">
@@ -409,11 +410,14 @@ function Services() {
 }
 
 function Projects() {
+  
+  const uniformGradient = "from-violet-600 via-violet-500 to-fuchsia-500";
+
   return (
     <section id="work" className="scroll-mt-24 py-10 md:py-24">
       <SectionHeader eyebrow="Selected Work" title="Projects & case studies" />
       <div className="mt-6 space-y-8 md:mt-10 md:space-y-12">
-        {projects.map((p, i) => (
+        {projects.map((p) => (
           <article
             key={p.title}
             className={`group overflow-hidden rounded-3xl border bg-white shadow-sm transition-all ${
@@ -422,21 +426,20 @@ function Projects() {
                 : "border-zinc-200 shadow-zinc-200/60 hover:border-violet-300 hover:shadow-xl hover:shadow-violet-200/60"
             }`}
           >
-            {/* ROUNDED CONTAINER HEADER: Dark background for Projects */}
-            <div className="relative h-24 md:h-32 bg-[#1e1e24] border-b border-zinc-800 overflow-hidden">
-              <div className="pointer-events-none absolute inset-0 hero-glow opacity-70" />
+           
+            <div className={`relative h-24 md:h-32 bg-gradient-to-br ${uniformGradient} overflow-hidden`}>
               <div className="absolute inset-0 opacity-20 dot-grid" />
               
               <div className="relative flex h-full items-center justify-between px-4 md:px-8">
                 <div className="flex items-center gap-3 md:gap-4">
-                  <div className="flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-xl md:rounded-2xl bg-gradient-to-br from-violet-600 to-fuchsia-600 text-xl md:text-2xl font-bold text-white shadow-lg shadow-violet-500/30 ring-1 ring-white/20">
+                  <div className="flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-xl md:rounded-2xl bg-white/20 text-xl md:text-2xl font-bold text-white backdrop-blur-sm ring-1 ring-white/30">
                     {p.title.charAt(0)}
                   </div>
                   <div>
                     <h3 className="text-base font-semibold text-white md:text-2xl">
                       {p.title}
                     </h3>
-                    <p className="text-[10px] md:text-sm font-medium text-zinc-400">
+                    <p className="text-[10px] md:text-sm font-medium text-white/85">
                       {p.subtitle}
                     </p>
                   </div>
@@ -534,7 +537,7 @@ function Skills() {
     <section id="skills" className="scroll-mt-24 border-t border-zinc-200 py-10 md:py-24">
       <SectionHeader eyebrow="Toolbox" title="Skills & technologies" />
       
-      {/* ROUNDED CONTAINER: Skills */}
+     
       <div className="mt-6 grid gap-4 md:mt-10 md:gap-5 md:grid-cols-2 lg:grid-cols-3">
         {skillGroups.map((g, i) => (
           <div
@@ -615,7 +618,6 @@ function Contact() {
       id="contact"
       className="scroll-mt-24 border-t border-zinc-200 py-10 md:py-24"
     >
-      
       <div className="relative overflow-hidden rounded-3xl border border-violet-300 bg-gradient-to-br from-violet-700 via-violet-800 to-fuchsia-800 px-5 py-10 md:px-12 md:py-16 shadow-2xl shadow-violet-400/50">
         <div className="absolute inset-0 opacity-20 dot-grid" />
         <div className="relative text-center md:text-left flex flex-col items-center md:items-start">
