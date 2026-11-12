@@ -14,7 +14,7 @@ export default function ProjectCarousel({
   const [rotateY, setRotateY] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  
+ 
   useEffect(() => {
     if (images.length <= 1) return;
     
@@ -48,17 +48,41 @@ export default function ProjectCarousel({
     setRotateY(0);
   };
 
+ 
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    
+    const rect = cardRef.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    
+    const touch = e.touches[0];
+    const touchX = touch.clientX - rect.left - width / 2;
+    const touchY = touch.clientY - rect.top - height / 2;
+    
+    const rY = (touchX / (width / 2)) * 15;
+    const rX = -(touchY / (height / 2)) * 15;
+    
+    setRotateX(rX);
+    setRotateY(rY);
+  };
+
+  const handleTouchEnd = () => {
+    setRotateX(0);
+    setRotateY(0);
+  };
+
   return (
-   
     <div 
       className="flex items-center justify-center animate-float"
       style={{ perspective: "1000px" }}
     >
-      
       <div
         ref={cardRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         className="relative w-[160px] md:w-[200px] aspect-[9/19] rounded-[2.5rem] border-[6px] border-zinc-100 bg-zinc-50 shadow-xl overflow-hidden shrink-0 transition-transform duration-200 ease-out"
         style={{
           transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
