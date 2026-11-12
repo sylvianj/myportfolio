@@ -15,12 +15,11 @@ export default function DotGrid() {
     let width = canvas.width = canvas.offsetWidth;
     let height = canvas.height = canvas.offsetHeight;
 
-    
     const spacing = 30;
-    const baseRadius = 1.5; 
+    const baseRadius = 1.5;
     const hoverRadius = 3.5;
-    const repelForce = 30; 
-    const maxDistance = 150; 
+    const repelForce = 30;
+    const maxDistance = 150;
 
     let dots: { x: number; y: number; baseX: number; baseY: number }[] = [];
 
@@ -36,13 +35,12 @@ export default function DotGrid() {
       }
     };
 
-    
     const resizeObserver = new ResizeObserver(() => {
       initDots();
     });
     resizeObserver.observe(canvas);
 
-   
+    
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
       mouseRef.current = {
@@ -55,18 +53,35 @@ export default function DotGrid() {
       mouseRef.current = { x: -1000, y: -1000 };
     };
 
+    
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        mouseRef.current = {
+          x: e.touches[0].clientX - rect.left,
+          y: e.touches[0].clientY - rect.top,
+        };
+      }
+    };
+
+    const handleTouchEnd = () => {
+     
+      mouseRef.current = { x: -1000, y: -1000 };
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
+    
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd);
 
     initDots();
 
-   
     let animationFrameId: number;
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
       const mouse = mouseRef.current;
 
-      
       ctx.fillStyle = "rgba(168, 85, 247, 0.4)"; 
 
       dots.forEach((dot) => {
@@ -79,21 +94,16 @@ export default function DotGrid() {
         let radius = baseRadius;
 
         if (distance < maxDistance) {
-         
           const force = (maxDistance - distance) / maxDistance;
-          
-          
           const directionX = dx === 0 ? 1 : dx / distance;
           const directionY = dy === 0 ? 1 : dy / distance;
           
           targetX -= directionX * force * repelForce;
           targetY -= directionY * force * repelForce;
           
-          
           radius = baseRadius + force * (hoverRadius - baseRadius);
         }
 
-        
         dot.x += (targetX - dot.x) * 0.15;
         dot.y += (targetY - dot.y) * 0.15;
 
@@ -110,6 +120,8 @@ export default function DotGrid() {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
       resizeObserver.disconnect();
       cancelAnimationFrame(animationFrameId);
     };

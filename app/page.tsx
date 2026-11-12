@@ -47,7 +47,7 @@ export default function Home() {
   );
 }
 
-
+/* ---------------- Icons ---------------- */
 
 function IconMobile() {
   return (
@@ -197,17 +197,15 @@ const skillIcons = [
   <IconWrench key="wrench" />,
 ];
 
+/* ---------------- Sections ---------------- */
 
 function Hero() {
   return (
     <section id="home" className="relative w-full bg-[#1e1e24] pt-32 pb-16 md:pt-40 md:pb-28 overflow-hidden">
       
-      
       <DotGrid />
 
-      
       <div className="pointer-events-none absolute inset-0 -z-10 hero-glow" />
-      
       
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center justify-center gap-10 px-4 md:px-8 md:flex-row md:gap-16">
         
@@ -217,17 +215,17 @@ function Hero() {
             Welcome to my world
           </p>
 
-          <div className="mt-4 md:mt-6 flex flex-col items-center md:items-start text-4xl md:text-7xl font-bold tracking-tight text-white leading-tight">
+          <div className="mt-4 md:mt-6 flex flex-col items-center md:items-start w-full gap-2 md:gap-4">
             <ParticleText 
               text="Hi, I'm" 
-              className="h-12 md:h-20" 
+              className="h-16 md:h-28 w-full" 
               fontSize="72"
               color="#ffffff"
             />
             
             <ParticleText 
               text="Sylvia Njoki" 
-              className="h-12 md:h-20" 
+              className="h-16 md:h-28 w-full" 
               fontSize="72"
               color="#e879f9"
             />
@@ -257,7 +255,6 @@ function Hero() {
           </div>
         </div>
 
-        
         <div className="hidden md:flex relative w-full md:w-1/2 justify-center md:justify-center items-center pointer-events-auto">
           <Animated3DImage 
             src="/sylvia-main.jpg" 

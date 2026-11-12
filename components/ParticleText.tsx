@@ -6,7 +6,7 @@ export default function ParticleText({
   text, 
   className = "", 
   fontSize = "48",
-  color = "#e879f9" 
+  color = "#e879f9"
 }: { 
   text: string; 
   className?: string; 
@@ -47,19 +47,37 @@ export default function ParticleText({
       if (!offCtx) return;
       offCtx.scale(dpr, dpr);
 
-     
-      offCtx.font = `bold ${fontSize}px Inter, sans-serif`;
+      // --- SMART DYNAMIC FONT SIZING ---
+      let calculatedSize = Number(fontSize);
+      offCtx.font = `bold ${calculatedSize}px Inter, sans-serif`;
+      let textMetrics = offCtx.measureText(text);
+      
+      // 1. Scale down if text is wider than the container
+      if (textMetrics.width > width) {
+        calculatedSize = Math.floor(calculatedSize * (width / textMetrics.width));
+      }
+      
+      // 2. Scale down if text is taller than the container (prevents clipping/overlap)
+      if (calculatedSize > height - 10) {
+        calculatedSize = height - 10;
+      }
+      
+      offCtx.font = `bold ${calculatedSize}px Inter, sans-serif`;
+      // ---------------------------------
+
       offCtx.fillStyle = "white";
       offCtx.textAlign = "left";
       offCtx.textBaseline = "middle";
       
+      // Center vertically
       offCtx.fillText(text, 0, height / 2);
 
       const imageData = offCtx.getImageData(0, 0, width * dpr, height * dpr);
       const data = imageData.data;
       particles = [];
 
-      const gap = 4; 
+      // Use smaller dots (gap) on mobile screens for sharper text
+      const gap = width < 500 ? 3 : 4;
       
       for (let y = 0; y < height; y += gap) {
         for (let x = 0; x < width; x += gap) {
@@ -81,11 +99,27 @@ export default function ParticleText({
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
-      mouseRef.current = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      };
+      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
     };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const rect = container.getBoundingClientRect();
+        mouseRef.current = {
+          x: e.touches[0].clientX - rect.left,
+          y: e.touches[0].clientY - rect.top,
+        };
+      }
+    };
+
+    const handleInteractionEnd = () => {
+      mouseRef.current = { x: -1000, y: -1000 };
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("mouseleave", handleInteractionEnd);
+    window.addEventListener("touchend", handleInteractionEnd);
 
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
@@ -95,7 +129,7 @@ export default function ParticleText({
         const dx = mouse.x - p.baseX;
         const dy = mouse.y - p.baseY;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        const maxDist = 100; 
+        const maxDist = 80;
         
         let targetX = p.baseX;
         let targetY = p.baseY;
@@ -112,7 +146,7 @@ export default function ParticleText({
 
         ctx.fillStyle = p.color;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2); // Made dots slightly smaller (1.5 instead of 2)
         ctx.fill();
       });
 
@@ -122,8 +156,6 @@ export default function ParticleText({
     init();
     animate();
 
-    window.addEventListener("mousemove", handleMouseMove);
-    
     const resizeObserver = new ResizeObserver(() => {
       init();
     });
@@ -131,6 +163,9 @@ export default function ParticleText({
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("mouseleave", handleInteractionEnd);
+      window.removeEventListener("touchend", handleInteractionEnd);
       resizeObserver.disconnect();
       cancelAnimationFrame(animationFrameId);
     };
